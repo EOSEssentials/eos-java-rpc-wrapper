@@ -1,4 +1,4 @@
 package client.impl;
 
-public class EosApiService {
+public interface EosApiService {
 }

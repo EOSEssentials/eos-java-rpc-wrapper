@@ -1,6 +1,5 @@
 package client.impl;
 
-import client.constant.EosApiConstants;
 import client.exception.EosApiError;
 import client.exception.EosApiException;
 import client.security.AuthenticationInterceptor;
@@ -21,21 +20,21 @@ public class EosApiServiceGenerator {
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
-                    .baseUrl(EosApiConstants.API_BASE_URL)
                     .addConverterFactory(JacksonConverterFactory.create());
 
     private static Retrofit retrofit = builder.build();
 
     public static <S> S createService(Class<S> serviceClass) {
-        return createService(serviceClass, null, null, null);
+        return createService(serviceClass, null, null, null, null);
     }
 
-    public static <S> S createService(Class<S> serviceClass, String apiKey, String secret, Proxy proxy) {
+    public static <S> S createService(Class<S> serviceClass, String apiKey, String secret, String baseUrl, Proxy proxy) {
         if (!StringUtils.isEmpty(apiKey) && !StringUtils.isEmpty(secret)) {
             AuthenticationInterceptor interceptor = new AuthenticationInterceptor(apiKey, secret);
             if (!httpClient.interceptors().contains(interceptor)) {
                 httpClient.addInterceptor(interceptor);
                 httpClient.proxy(proxy);
+                builder.baseUrl(baseUrl);
                 builder.client(httpClient.build());
                 retrofit = builder.build();
             }
@@ -63,7 +62,7 @@ public class EosApiServiceGenerator {
     /**
      * Extracts and converts the response error body into an object.
      */
-    public static EosApiError getEosApiError(Response<?> response) throws IOException, EosApiException {
+    private static EosApiError getEosApiError(Response<?> response) throws IOException, EosApiException {
         return (EosApiError)retrofit.responseBodyConverter(EosApiError.class, new Annotation[0])
                 .convert(response.errorBody());
     }
