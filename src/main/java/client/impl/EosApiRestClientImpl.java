@@ -1,10 +1,11 @@
 package client.impl;
 
+
 import client.EosApiRestClient;
 
 import java.net.Proxy;
 
-public class EosApiRestClientImpl implements EosApiService{
+public class EosApiRestClientImpl implements EosApiRestClient{
 
     private final EosApiService eosApiService;
 
