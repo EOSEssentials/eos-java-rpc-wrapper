@@ -2,6 +2,7 @@ package client.impl;
 
 
 import client.EosApiRestClient;
+import client.domain.chain.ChainInfo;
 
 import java.net.Proxy;
 
@@ -13,4 +14,7 @@ public class EosApiRestClientImpl implements EosApiRestClient{
         eosApiService = EosApiServiceGenerator.createService(EosApiService.class, apiKey, secret, baseUrl, proxy);
     }
 
+    public ChainInfo getChainInfo(){
+        return EosApiServiceGenerator.executeSync(eosApiService.getChainInfo());
+    }
 }

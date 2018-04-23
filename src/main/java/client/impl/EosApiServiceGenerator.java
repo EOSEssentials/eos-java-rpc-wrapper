@@ -22,11 +22,7 @@ public class EosApiServiceGenerator {
             new Retrofit.Builder()
                     .addConverterFactory(JacksonConverterFactory.create());
 
-    private static Retrofit retrofit = builder.build();
-
-    public static <S> S createService(Class<S> serviceClass) {
-        return createService(serviceClass, null, null, null, null);
-    }
+    private static Retrofit retrofit;
 
     public static <S> S createService(Class<S> serviceClass, String apiKey, String secret, String baseUrl, Proxy proxy) {
         if (!StringUtils.isEmpty(apiKey) && !StringUtils.isEmpty(secret)) {
