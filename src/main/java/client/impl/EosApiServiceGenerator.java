@@ -29,7 +29,11 @@ public class EosApiServiceGenerator {
             AuthenticationInterceptor interceptor = new AuthenticationInterceptor(apiKey, secret);
             if (!httpClient.interceptors().contains(interceptor)) {
                 httpClient.addInterceptor(interceptor);
-                httpClient.proxy(proxy);
+
+                if(proxy != null) {
+                    httpClient.proxy(proxy);
+                }
+
                 builder.baseUrl(baseUrl);
                 builder.client(httpClient.build());
                 retrofit = builder.build();

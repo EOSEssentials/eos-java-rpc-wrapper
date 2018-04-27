@@ -16,6 +16,10 @@ public class ChainInfo {
 
     private String headBlockProducer;
 
+    private String recentSlots;
+
+    private String participationRate;
+
     public ChainInfo(){
 
     }
@@ -74,4 +78,21 @@ public class ChainInfo {
         this.headBlockProducer = headBlockProducer;
     }
 
+    public String getParticipationRate() {
+        return participationRate;
+    }
+
+    @JsonProperty("participation_rate")
+    public void setParticipationRate(String participationRate) {
+        this.participationRate = participationRate;
+    }
+
+    public String getRecentSlots() {
+        return recentSlots;
+    }
+
+    @JsonProperty("recent_slots")
+    public void setRecentSlots(String recentSlots) {
+        this.recentSlots = recentSlots;
+    }
 }

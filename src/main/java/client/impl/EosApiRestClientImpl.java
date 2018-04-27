@@ -2,6 +2,7 @@ package client.impl;
 
 
 import client.EosApiRestClient;
+import client.domain.chain.Block;
 import client.domain.chain.ChainInfo;
 
 import java.net.Proxy;
@@ -16,5 +17,9 @@ public class EosApiRestClientImpl implements EosApiRestClient{
 
     public ChainInfo getChainInfo(){
         return EosApiServiceGenerator.executeSync(eosApiService.getChainInfo());
+    }
+
+    public Block getBlock(String blockNumberOrId){
+        return EosApiServiceGenerator.executeSync(eosApiService.getBlock(blockNumberOrId));
     }
 }

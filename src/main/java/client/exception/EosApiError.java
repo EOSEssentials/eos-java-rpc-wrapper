@@ -4,43 +4,45 @@ package client.exception;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-/**
- * Binance API error object.
- */
+
 public class EosApiError {
 
-        /**
-         * Error code.
-         */
-        private int code;
+    private String message;
 
-        /**
-         * Error message.
-         */
-        private String msg;
+    private String code;
 
-        public int getCode() {
-            return code;
-        }
+    private EosError error;
 
-        public void setCode(int code) {
-            this.code = code;
-        }
+    public String getMessage() {
+        return message;
+    }
 
-        public String getMsg() {
-            return msg;
-        }
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
-        public void setMsg(String msg) {
-            this.msg = msg;
-        }
+    public String getCode() {
+        return code;
+    }
 
-        @Override
-        public String toString() {
-            return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                    .append("code", code)
-                    .append("msg", msg)
-                    .toString();
-        }
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public EosError getError() {
+        return error;
+    }
+
+    public void setError(EosError error) {
+        this.error = error;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+                .append("message", message)
+                .append("code", code)
+                .toString();
+    }
 
 }
