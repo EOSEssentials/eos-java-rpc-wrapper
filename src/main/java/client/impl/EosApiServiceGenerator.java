@@ -2,9 +2,8 @@ package client.impl;
 
 import client.exception.EosApiError;
 import client.exception.EosApiException;
-import client.security.AuthenticationInterceptor;
 import okhttp3.OkHttpClient;
-import org.apache.commons.lang3.StringUtils;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -24,21 +23,17 @@ public class EosApiServiceGenerator {
 
     private static Retrofit retrofit;
 
-    public static <S> S createService(Class<S> serviceClass, String apiKey, String secret, String baseUrl, Proxy proxy) {
-        if (!StringUtils.isEmpty(apiKey) && !StringUtils.isEmpty(secret)) {
-            AuthenticationInterceptor interceptor = new AuthenticationInterceptor(apiKey, secret);
-            if (!httpClient.interceptors().contains(interceptor)) {
-                httpClient.addInterceptor(interceptor);
+    public static <S> S createService(Class<S> serviceClass, String baseUrl, Proxy proxy) {
 
-                if(proxy != null) {
-                    httpClient.proxy(proxy);
-                }
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        httpClient.addInterceptor(httpLoggingInterceptor);
 
-                builder.baseUrl(baseUrl);
-                builder.client(httpClient.build());
-                retrofit = builder.build();
-            }
-        }
+        httpClient.proxy(proxy);
+        builder.baseUrl(baseUrl);
+        builder.client(httpClient.build());
+        retrofit = builder.build();
+
         return retrofit.create(serviceClass);
     }
 
@@ -63,7 +58,7 @@ public class EosApiServiceGenerator {
      * Extracts and converts the response error body into an object.
      */
     private static EosApiError getEosApiError(Response<?> response) throws IOException, EosApiException {
-        return (EosApiError)retrofit.responseBodyConverter(EosApiError.class, new Annotation[0])
+        return (EosApiError) retrofit.responseBodyConverter(EosApiError.class, new Annotation[0])
                 .convert(response.errorBody());
     }
 }

@@ -1,22 +1,28 @@
-package client.domain.chain;
+package client.domain.response.chain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Block {
 
-    private String serverVersion;
+    private String previous;
 
     private String timeStamp;
 
-    private String transactionMerkleRoot;
+    private String transaction_mroot;
+
+    private String action_mroot;
+
+    private String block_mroot;
 
     private String producer;
 
-    private String[] producerChanges;
+    private String scheduleVersion;
+
+    private String newProducers;
 
     private String producerSignature;
-
-    private String[] cycles;
 
     private String id;
 
@@ -25,16 +31,33 @@ public class Block {
     private String refBlockPrefix;
 
     public Block(){
-
     }
 
-    public String getServerVersion() {
-        return serverVersion;
+    public String getActionMerkleRoot(){
+        return action_mroot;
     }
 
-    @JsonProperty("server_version")
-    public void setServerVersion(String serverVersion) {
-        this.serverVersion = serverVersion;
+    @JsonProperty("action_mroot")
+    public void setActionMerkleRoot(String actionMerkleRoot){
+        this.action_mroot = actionMerkleRoot;
+    }
+
+    public String getBlockMerkleRoot(){
+        return block_mroot;
+    }
+
+    @JsonProperty("block_mroot")
+    public void setBlockMerkleRoot(String blockMerkleRoot){
+        this.block_mroot = blockMerkleRoot;
+    }
+
+    public String getPrevious() {
+        return previous;
+    }
+
+    @JsonProperty("previous")
+    public void setPrevious(String previous) {
+        this.previous = previous;
     }
 
     public String getTimeStamp() {
@@ -47,12 +70,12 @@ public class Block {
     }
 
     public String getTransactionMerkleRoot() {
-        return transactionMerkleRoot;
+        return transaction_mroot;
     }
 
-    @JsonProperty("transaction_merkle_root")
+    @JsonProperty("transaction_mroot")
     public void setTransactionMerkleRoot(String transactionMerkleRoot) {
-        this.transactionMerkleRoot = transactionMerkleRoot;
+        this.transaction_mroot = transactionMerkleRoot;
     }
 
     public String getProducer() {
@@ -64,14 +87,6 @@ public class Block {
         this.producer = producer;
     }
 
-    public String[] getProducerChanges() {
-        return producerChanges;
-    }
-
-    @JsonProperty("producer_changes")
-    public void setProducerChanges(String[] producerChanges) {
-        this.producerChanges = producerChanges;
-    }
 
     public String getProducerSignature() {
         return producerSignature;
@@ -80,15 +95,6 @@ public class Block {
     @JsonProperty("producer_signature")
     public void setProducerSignature(String producerSignature) {
         this.producerSignature = producerSignature;
-    }
-
-    public String[] getCycles() {
-        return cycles;
-    }
-
-    @JsonProperty("cycles")
-    public void setCycles(String[] cycles) {
-        this.cycles = cycles;
     }
 
     public String getId() {
@@ -116,5 +122,22 @@ public class Block {
     @JsonProperty("ref_block_prefix")
     public void setRefBlockPrefix(String refBlockPrefix) {
         this.refBlockPrefix = refBlockPrefix;
+    }
+
+    public String getNewProducers() {
+        return newProducers;
+    }
+
+    public void setNewProducers(String newProducers) {
+        this.newProducers = newProducers;
+    }
+
+    public String getScheduleVersion() {
+        return scheduleVersion;
+    }
+
+    @JsonProperty("schedule_version")
+    public void setScheduleVersion(String scheduleVersion) {
+        this.scheduleVersion = scheduleVersion;
     }
 }

@@ -1,7 +1,7 @@
 package client;
 
-import client.domain.chain.Block;
-import client.domain.chain.ChainInfo;
+import client.domain.response.chain.Block;
+import client.domain.response.chain.ChainInfo;
 
 public interface EosApiRestClient {
 
