@@ -1,8 +1,10 @@
 package client.impl;
 
-import client.domain.Request.chain.RequiredKeysRequest;
-import client.domain.Request.chain.TransactionRequest;
+import client.domain.request.chain.RequiredKeysRequest;
+import client.domain.request.chain.TransactionRequest;
+import client.domain.request.wallet.SignTransactionRequest;
 import client.domain.response.chain.*;
+import client.domain.response.wallet.SignTransaction;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -53,17 +55,20 @@ public interface EosApiService {
     Call<Void> unlockWallet(@Body String walletName, String walletPassword);
 
     @POST("/v1/wallet/import_key")
-    Call<Void> importKey(@Body String walletName, String walletPassword);
+    Call<Void> importKey(@Body String walletName, String key);
 
     @GET("/v1/wallet/list_wallets")
-    Call<Void> listWallets();
+    Call<List<String>> listWallets();
 
     @GET("/v1/wallet/list_keys")
-    Call<Void> listKeys();
+    Call<List<String>> listKeys();
+
+    @GET("/v1/wallet/get_public_keys")
+    Call<List<String>> getPublicKeys();
 
     @POST("/v1/wallet/set_timeout")
-    Call<Void> getPublicKeys(@Body Map<String, String> requestFields);
+    Call<Void> setTimeout(@Body Integer timeOut);
 
     @POST("/v1/wallet/sign_transaction")
-    Call<Void> getPublicKeys();
+    Call<SignTransaction> signTransaction(SignTransactionRequest signTransactionRequest);
 }

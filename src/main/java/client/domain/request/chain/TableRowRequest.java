@@ -1,4 +1,4 @@
-package client.domain.Request.chain;
+package client.domain.request.chain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

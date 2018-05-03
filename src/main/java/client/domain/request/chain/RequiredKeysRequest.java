@@ -1,4 +1,4 @@
-package client.domain.Request.chain;
+package client.domain.request.chain;
 
 public class RequiredKeysRequest {
 }
