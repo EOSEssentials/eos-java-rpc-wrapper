@@ -10,11 +10,11 @@ public class Block {
 
     private String timeStamp;
 
-    private String transaction_mroot;
+    private String transactionMerkleRoot;
 
-    private String action_mroot;
+    private String actionMerkleRoot;
 
-    private String block_mroot;
+    private String blockMerkleRoot;
 
     private String producer;
 
@@ -26,29 +26,29 @@ public class Block {
 
     private String id;
 
-    private String blockNum;
+    private Long blockNum;
 
-    private String refBlockPrefix;
+    private Long refBlockPrefix;
 
     public Block(){
     }
 
     public String getActionMerkleRoot(){
-        return action_mroot;
+        return actionMerkleRoot;
     }
 
     @JsonProperty("action_mroot")
     public void setActionMerkleRoot(String actionMerkleRoot){
-        this.action_mroot = actionMerkleRoot;
+        this.actionMerkleRoot = actionMerkleRoot;
     }
 
     public String getBlockMerkleRoot(){
-        return block_mroot;
+        return blockMerkleRoot;
     }
 
     @JsonProperty("block_mroot")
     public void setBlockMerkleRoot(String blockMerkleRoot){
-        this.block_mroot = blockMerkleRoot;
+        this.blockMerkleRoot = blockMerkleRoot;
     }
 
     public String getPrevious() {
@@ -70,12 +70,12 @@ public class Block {
     }
 
     public String getTransactionMerkleRoot() {
-        return transaction_mroot;
+        return transactionMerkleRoot;
     }
 
     @JsonProperty("transaction_mroot")
     public void setTransactionMerkleRoot(String transactionMerkleRoot) {
-        this.transaction_mroot = transactionMerkleRoot;
+        this.transactionMerkleRoot = transactionMerkleRoot;
     }
 
     public String getProducer() {
@@ -106,21 +106,21 @@ public class Block {
         this.id = id;
     }
 
-    public String getBlockNum() {
+    public Long getBlockNum() {
         return blockNum;
     }
 
     @JsonProperty("block_num")
-    public void setBlockNum(String blockNum) {
+    public void setBlockNum(Long blockNum) {
         this.blockNum = blockNum;
     }
 
-    public String getRefBlockPrefix() {
+    public Long getRefBlockPrefix() {
         return refBlockPrefix;
     }
 
     @JsonProperty("ref_block_prefix")
-    public void setRefBlockPrefix(String refBlockPrefix) {
+    public void setRefBlockPrefix(Long refBlockPrefix) {
         this.refBlockPrefix = refBlockPrefix;
     }
 
