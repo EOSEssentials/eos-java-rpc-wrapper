@@ -52,16 +52,16 @@ public interface EosApiService {
     Call<Void> lockAll();
 
     @POST("/v1/wallet/unlock")
-    Call<Void> unlockWallet(@Body String walletName, String walletPassword);
+    Call<Void> unlockWallet(@Body List<String> requestFields);
 
     @POST("/v1/wallet/import_key")
-    Call<Void> importKey(@Body String walletName, String key);
+    Call<Void> importKey(@Body List<String> requestFields);
 
     @GET("/v1/wallet/list_wallets")
     Call<List<String>> listWallets();
 
     @GET("/v1/wallet/list_keys")
-    Call<List<String>> listKeys();
+    Call<List<List<String>>> listKeys();
 
     @GET("/v1/wallet/get_public_keys")
     Call<List<String>> getPublicKeys();
@@ -70,5 +70,5 @@ public interface EosApiService {
     Call<Void> setTimeout(@Body Integer timeOut);
 
     @POST("/v1/wallet/sign_transaction")
-    Call<SignTransaction> signTransaction(SignTransactionRequest signTransactionRequest);
+    Call<SignTransaction> signTransaction(@Body SignTransactionRequest signTransactionRequest);
 }

@@ -9,9 +9,7 @@ import client.domain.response.chain.*;
 import client.domain.response.wallet.SignTransaction;
 
 import java.net.Proxy;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.*;
 
 public class EosApiRestClientImpl implements EosApiRestClient{
 
@@ -99,12 +97,20 @@ public class EosApiRestClientImpl implements EosApiRestClient{
 
     @Override
     public void unlockWallet(String walletName, String walletPassword){
-        EosApiServiceGenerator.executeSync(eosApiService.unlockWallet(walletName, walletPassword));
+        List<String> requestFields = new ArrayList<>(2);
+
+        requestFields.add(walletName);
+        requestFields.add(walletPassword);
+        EosApiServiceGenerator.executeSync(eosApiService.unlockWallet(requestFields));
     }
 
     @Override
     public void importKeyIntoWallet(String walletName, String key){
-        EosApiServiceGenerator.executeSync(eosApiService.importKey(walletName, key));
+        List<String> requestFields = new ArrayList<>(2);
+
+        requestFields.add(walletName);
+        requestFields.add(key);
+        EosApiServiceGenerator.executeSync(eosApiService.importKey(requestFields));
     }
 
     @Override
@@ -113,7 +119,7 @@ public class EosApiRestClientImpl implements EosApiRestClient{
     }
 
     @Override
-    public List<String> listKeys(){
+    public List<List<String>> listKeys(){
        return EosApiServiceGenerator.executeSync(eosApiService.listKeys());
     }
 
