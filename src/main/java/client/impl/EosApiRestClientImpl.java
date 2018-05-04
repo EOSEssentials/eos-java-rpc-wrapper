@@ -4,9 +4,8 @@ package client.impl;
 import client.EosApiRestClient;
 import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.TransactionRequest;
-import client.domain.request.wallet.SignTransactionRequest;
+import client.domain.request.wallet.transaction.UnsignedTransaction;
 import client.domain.response.chain.*;
-import client.domain.response.wallet.SignTransaction;
 
 import java.net.Proxy;
 import java.util.*;
@@ -129,8 +128,8 @@ public class EosApiRestClientImpl implements EosApiRestClient{
     }
 
     @Override
-    public SignTransaction signTransaction(SignTransactionRequest signTransactionRequest) {
-        return EosApiServiceGenerator.executeSync(eosApiService.signTransaction(signTransactionRequest));
+    public client.domain.response.wallet.SignTransaction signTransaction(UnsignedTransaction unsignedTransaction) {
+        return EosApiServiceGenerator.executeSync(eosApiService.signTransaction(unsignedTransaction));
     }
 
     @Override

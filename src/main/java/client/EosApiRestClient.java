@@ -2,9 +2,8 @@ package client;
 
 import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.TransactionRequest;
-import client.domain.request.wallet.SignTransactionRequest;
+import client.domain.request.wallet.transaction.SignTransactionRequest;
 import client.domain.response.chain.*;
-import client.domain.response.wallet.SignTransaction;
 
 import java.util.List;
 
@@ -44,7 +43,7 @@ public interface EosApiRestClient {
 
     List<String> getPublicKeys();
 
-    SignTransaction signTransaction(SignTransactionRequest signTransactionRequest);
+    SignTransactionRequest signTransaction(SignTransactionRequest unsignedTransaction);
 
     void setWalletTimeout(Integer timeout);
 }

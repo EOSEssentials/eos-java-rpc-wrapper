@@ -2,9 +2,8 @@ package client.impl;
 
 import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.TransactionRequest;
-import client.domain.request.wallet.SignTransactionRequest;
+import client.domain.request.wallet.transaction.SignTransactionRequest;
 import client.domain.response.chain.*;
-import client.domain.response.wallet.SignTransaction;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -70,5 +69,5 @@ public interface EosApiService {
     Call<Void> setTimeout(@Body Integer timeOut);
 
     @POST("/v1/wallet/sign_transaction")
-    Call<SignTransaction> signTransaction(@Body SignTransactionRequest signTransactionRequest);
+    Call<SignTransactionRequest> signTransaction(@Body SignTransactionRequest unsignedTransaction);
 }
