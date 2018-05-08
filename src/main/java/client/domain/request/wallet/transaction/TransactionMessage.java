@@ -1,19 +1,20 @@
 package client.domain.request.wallet.transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionMessage {
-
-    private String data;
-
-    private List<TransactionAuthorization> authorization;
 
     private String code;
 
     private String type;
 
-    public TransactionMessage(){
+    private String data;
 
+    private List<TransactionAuthorization> authorization;
+
+    public TransactionMessage(){
+        authorization = new ArrayList<>(0);
     }
 
     public String getData() {

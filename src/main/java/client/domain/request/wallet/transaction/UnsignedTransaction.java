@@ -2,6 +2,7 @@ package client.domain.request.wallet.transaction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UnsignedTransaction {
@@ -20,6 +21,12 @@ public class UnsignedTransaction {
 
     private List<TransactionMessage> messages;
 
+    public UnsignedTransaction(){
+        readScope = new ArrayList<>(0);
+        scope = new ArrayList<>(0);
+        signatures = new ArrayList<>(0);
+        messages = new ArrayList<>(0);
+    }
     public List<String> getReadScope() {
         return readScope;
     }
@@ -49,6 +56,7 @@ public class UnsignedTransaction {
         return refBlockPrefix;
     }
 
+    @JsonProperty("ref_block_prefix")
     public void setRefBlockPrefix(Long refBlockPrefix) {
         this.refBlockPrefix = refBlockPrefix;
     }
@@ -57,6 +65,7 @@ public class UnsignedTransaction {
         return refBlockNum;
     }
 
+    @JsonProperty("ref_block_num")
     public void setRefBlockNum(Long refBlockNum) {
         this.refBlockNum = refBlockNum;
     }

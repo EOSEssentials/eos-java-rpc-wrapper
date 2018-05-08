@@ -32,6 +32,7 @@ public class EosApiServiceGenerator {
         httpClient.proxy(proxy);
         builder.baseUrl(baseUrl);
         builder.client(httpClient.build());
+        builder.addConverterFactory(JacksonConverterFactory.create());
         retrofit = builder.build();
 
         return retrofit.create(serviceClass);
