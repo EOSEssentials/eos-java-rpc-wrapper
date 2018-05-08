@@ -2,8 +2,6 @@ package client.domain.request.wallet.transaction;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.util.List;
 
