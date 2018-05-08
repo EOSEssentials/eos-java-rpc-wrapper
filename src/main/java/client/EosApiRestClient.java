@@ -5,9 +5,11 @@ import client.domain.request.chain.TransactionRequest;
 import client.domain.request.wallet.transaction.UnsignedTransaction;
 import client.domain.response.chain.*;
 import client.domain.response.chain.account.Account;
+import client.domain.response.chain.code.Code;
 import client.domain.response.wallet.TransactionSignature;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EosApiRestClient {
 
@@ -19,9 +21,11 @@ public interface EosApiRestClient {
 
     Code getCode(String accountName);
 
-    TableRow getTableRows(String scope, String code, String table, Boolean json, int lowerBound, int upperBound, int limit);
+    TableRow getTableRows(String scope, String code, String table);
 
-    AbiBinJson apiBinToJson(String code, String action, String binargs);
+    AbiBinToJson abiBinToJson(String code, String action, String binargs);
+
+    AbiJsonToBin abiJsonToBin(String code, String action, Map<String, String> args);
 
     void pushTransactions(List<TransactionRequest> transactionRequests);
 

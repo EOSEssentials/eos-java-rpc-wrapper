@@ -1,10 +1,12 @@
 package client.impl;
 
+import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.TransactionRequest;
 import client.domain.request.wallet.transaction.SignTransactionRequest;
 import client.domain.response.chain.*;
 import client.domain.response.chain.account.Account;
+import client.domain.response.chain.code.Code;
 import client.domain.response.wallet.TransactionSignature;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -32,7 +34,10 @@ public interface EosApiService {
     Call<TableRow> getTableRows(@Body Map<String, String> requestFields);
 
     @POST("/v1/chain/abi_bin_to_json")
-    Call<AbiBinJson> apiBinToJson(@Body Map<String, String> requestFields);
+    Call<AbiBinToJson> abiBinToJson(@Body Map<String, String> requestFields);
+
+    @POST("/v1/chain/abi_json_to_bin")
+    Call<AbiJsonToBin> abiJsonToBin(@Body AbiJsonToBinRequest abiJsonToBinRequest);
 
     @POST("/v1/chain/push_transaction")
     Call<Void> pushTransaction(@Body List<TransactionRequest> transactionRequests);

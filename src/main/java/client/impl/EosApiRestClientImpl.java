@@ -2,12 +2,14 @@ package client.impl;
 
 
 import client.EosApiRestClient;
+import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.TransactionRequest;
 import client.domain.request.wallet.transaction.SignTransactionRequest;
 import client.domain.request.wallet.transaction.UnsignedTransaction;
 import client.domain.response.chain.*;
 import client.domain.response.chain.account.Account;
+import client.domain.response.chain.code.Code;
 import client.domain.response.wallet.TransactionSignature;
 
 import java.net.Proxy;
@@ -42,29 +44,31 @@ public class EosApiRestClientImpl implements EosApiRestClient{
     }
 
     @Override
-    public TableRow getTableRows(String scope, String code, String table, Boolean json, int lowerBound, int upperBound, int limit){
+    public TableRow getTableRows(String scope, String code, String table){
         LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(7);
 
-        requestParameters.put("Scope", scope);
+        requestParameters.put("scope", scope);
         requestParameters.put("code", code);
         requestParameters.put("table", table);
-        requestParameters.put("json", Boolean.toString(json));
-        requestParameters.put("lower_bound", Integer.toString(lowerBound));
-        requestParameters.put("upper_bound", Integer.toString(upperBound));
-        requestParameters.put("limit", Integer.toString(limit));
+        requestParameters.put("json", "true");
 
         return EosApiServiceGenerator.executeSync(eosApiService.getTableRows(requestParameters));
     }
 
     @Override
-    public AbiBinJson apiBinToJson(String code, String action, String binargs){
+    public AbiBinToJson abiBinToJson(String code, String action, String binargs){
         LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(3);
 
         requestParameters.put("code", code);
         requestParameters.put("action", action);
         requestParameters.put("binargs", binargs);
 
-        return EosApiServiceGenerator.executeSync(eosApiService.apiBinToJson(requestParameters));
+        return EosApiServiceGenerator.executeSync(eosApiService.abiBinToJson(requestParameters));
+    }
+
+    @Override
+    public AbiJsonToBin abiJsonToBin (String code, String action, Map<String, String> args){
+        return EosApiServiceGenerator.executeSync(eosApiService.abiJsonToBin(new AbiJsonToBinRequest(code, action, args)));
     }
 
     @Override
