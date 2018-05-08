@@ -14,9 +14,11 @@ public class TransactionRequest {
 
     private List<String> scope;
 
-    private List<ActionRequestElement> actionRequestElements;
+    private List<ActionRequestElement> actions;
 
     private List<String> signatures;
+
+    private List<String> authorizations;
 
     public TransactionRequest(){
 
@@ -56,12 +58,12 @@ public class TransactionRequest {
         this.scope = scope;
     }
 
-    public List<ActionRequestElement> getActionRequestElements() {
-        return actionRequestElements;
+    public List<ActionRequestElement> getActions() {
+        return actions;
     }
 
-    public void setActionRequestElements(List<ActionRequestElement> actionRequestElements) {
-        this.actionRequestElements = actionRequestElements;
+    public void setActions(List<ActionRequestElement> actionRequestElements) {
+        this.actions = actionRequestElements;
     }
 
     public List<String> getSignatures() {
@@ -70,5 +72,13 @@ public class TransactionRequest {
 
     public void setSignatures(List<String> signatures) {
         this.signatures = signatures;
+    }
+
+    public List<String> getAuthorizations() {
+        return authorizations;
+    }
+
+    public void setAuthorizations(List<String> authorizations) {
+        this.authorizations = authorizations;
     }
 }

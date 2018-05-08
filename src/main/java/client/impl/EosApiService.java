@@ -33,11 +33,11 @@ public interface EosApiService {
     @POST("/v1/chain/get_table_rows")
     Call<TableRow> getTableRows(@Body Map<String, String> requestFields);
 
-    @POST("/v1/chain/abi_bin_to_json")
-    Call<AbiBinToJson> abiBinToJson(@Body Map<String, String> requestFields);
-
     @POST("/v1/chain/abi_json_to_bin")
     Call<AbiJsonToBin> abiJsonToBin(@Body AbiJsonToBinRequest abiJsonToBinRequest);
+
+    @POST("/v1/chain/abi_bin_to_json")
+    Call<AbiBinToJson> abiBinToJson(@Body Map<String, String> requestFields);
 
     @POST("/v1/chain/push_transaction")
     Call<Void> pushTransaction(@Body List<TransactionRequest> transactionRequests);
