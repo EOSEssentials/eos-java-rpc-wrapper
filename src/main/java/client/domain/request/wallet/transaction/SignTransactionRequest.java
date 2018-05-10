@@ -1,6 +1,7 @@
 package client.domain.request.wallet.transaction;
 
 
+import client.domain.common.transaction.PackedTransaction;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.List;
@@ -8,24 +9,24 @@ import java.util.List;
 @JsonFormat(shape = JsonFormat.Shape.ARRAY)
 public class SignTransactionRequest {
 
-    private UnsignedTransaction unsignedTransaction;
+    private PackedTransaction packedTransaction;
 
     private List<String> publicKeys;
 
     private String chainId;
 
-    public SignTransactionRequest(UnsignedTransaction unsignedTransaction, List<String> publicKeys, String chainId){
-        this.unsignedTransaction = unsignedTransaction;
+    public SignTransactionRequest(PackedTransaction packedTransaction, List<String> publicKeys, String chainId){
+        this.packedTransaction = packedTransaction;
         this.publicKeys = publicKeys;
         this.chainId = chainId;
     }
 
-    public UnsignedTransaction getUnsignedTransaction() {
-        return unsignedTransaction;
+    public PackedTransaction getPackedTransaction() {
+        return packedTransaction;
     }
 
-    public void setUnsignedTransaction(UnsignedTransaction unsignedTransaction) {
-        this.unsignedTransaction = unsignedTransaction;
+    public void setPackedTransaction(PackedTransaction packedTransaction) {
+        this.packedTransaction = packedTransaction;
     }
 
     public List<String> getPublicKeys() {

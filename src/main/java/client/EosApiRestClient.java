@@ -1,12 +1,11 @@
 package client;
 
-import client.domain.request.chain.RequiredKeysRequest;
-import client.domain.request.chain.TransactionRequest;
-import client.domain.request.wallet.transaction.UnsignedTransaction;
+import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.response.chain.*;
 import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
-import client.domain.response.wallet.TransactionSignature;
+import client.domain.common.transaction.PackedTransaction;
+import client.domain.response.chain.transaction.PushedTransaction;
 
 import java.util.List;
 import java.util.Map;
@@ -27,9 +26,11 @@ public interface EosApiRestClient {
 
     AbiJsonToBin abiJsonToBin(String code, String action, Map<String, String> args);
 
-    void pushTransactions(List<TransactionRequest> transactionRequests);
+    PushedTransaction pushTransaction(String compression, PackedTransaction packedTransaction, List<String> signatures);
 
-    RequiredKeys getRequiredKeys(RequiredKeysRequest requiredKeysRequests);
+    List<PushedTransaction> pushTransactions(List<PushTransactionRequest> pushTransactionRequests);
+
+    RequiredKeys getRequiredKeys(PackedTransaction transaction, List<String> keys);
 
     String createWallet(String walletName);
 
@@ -49,7 +50,7 @@ public interface EosApiRestClient {
 
     List<String> getPublicKeys();
 
-    TransactionSignature signTransaction(UnsignedTransaction unsignedTransaction, List<String> publicKeys, String chainId);
+    PackedTransaction signTransaction(PackedTransaction unsignedTransaction, List<String> publicKeys, String chainId);
 
     void setWalletTimeout(Integer timeout);
 }

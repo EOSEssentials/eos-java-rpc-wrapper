@@ -1,25 +1,26 @@
 package client.domain.request.chain;
 
-import client.domain.request.wallet.transaction.UnsignedTransaction;
+import client.domain.common.transaction.PackedTransaction;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
 public class RequiredKeysRequest {
 
-    private UnsignedTransaction transaction;
+    private PackedTransaction transaction;
 
     private List<String> availableKeys;
 
-    public RequiredKeysRequest(){
-
+    public RequiredKeysRequest(PackedTransaction transaction, List<String> availableKeys){
+        this.transaction = transaction;
+        this.availableKeys = availableKeys;
     }
 
-    public UnsignedTransaction getTransaction() {
+    public PackedTransaction getTransaction() {
         return transaction;
     }
 
-    public void setTransaction(UnsignedTransaction transaction) {
+    public void setTransaction(PackedTransaction transaction) {
         this.transaction = transaction;
     }
 

@@ -1,10 +1,11 @@
-package client.domain.response.wallet;
+package client.domain.common.transaction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 import java.util.List;
 
-public class TransactionSignature {
+public class PackedTransaction {
 
     private String region;
 
@@ -14,19 +15,21 @@ public class TransactionSignature {
 
     private String refBlockPrefix;
 
-    private String maxKcpuUsage;
-
     private String refBlockNum;
+
+    private String maxKcpuUsage;
 
     private List<String> contextFreeData;
 
     private List<String> signatures;
 
-    private List<String> contextFreeActions;
+    private List<TransactionAction> contextFreeActions;
 
-    private List<String> actions;
+    private List<TransactionAction> actions;
 
     private String delaySec;
+
+
 
     public String getRegion() {
         return region;
@@ -89,28 +92,30 @@ public class TransactionSignature {
         this.contextFreeData = contextFreeData;
     }
 
+
     public List<String> getSignatures() {
         return signatures;
     }
+
 
     public void setSignatures(List<String> signatures) {
         this.signatures = signatures;
     }
 
-    public List<String> getContextFreeActions() {
+    public List<TransactionAction> getContextFreeActions() {
         return contextFreeActions;
     }
 
     @JsonProperty("context_free_actions")
-    public void setContextFreeActions(List<String> contextFreeActions) {
+    public void setContextFreeActions(List<TransactionAction>contextFreeActions) {
         this.contextFreeActions = contextFreeActions;
     }
 
-    public List<String> getActions() {
+    public List<TransactionAction> getActions() {
         return actions;
     }
 
-    public void setActions(List<String> actions) {
+    public void setActions(List<TransactionAction> actions) {
         this.actions = actions;
     }
 

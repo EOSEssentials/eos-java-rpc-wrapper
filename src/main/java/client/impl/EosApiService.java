@@ -2,12 +2,13 @@ package client.impl;
 
 import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.RequiredKeysRequest;
-import client.domain.request.chain.TransactionRequest;
+import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.request.wallet.transaction.SignTransactionRequest;
 import client.domain.response.chain.*;
 import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
-import client.domain.response.wallet.TransactionSignature;
+import client.domain.common.transaction.PackedTransaction;
+import client.domain.response.chain.transaction.PushedTransaction;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -40,7 +41,10 @@ public interface EosApiService {
     Call<AbiBinToJson> abiBinToJson(@Body Map<String, String> requestFields);
 
     @POST("/v1/chain/push_transaction")
-    Call<Void> pushTransaction(@Body List<TransactionRequest> transactionRequests);
+    Call<PushedTransaction> pushTransaction(@Body PushTransactionRequest pushTransactionRequest);
+
+    @POST("/v1/chain/push_transactions")
+    Call<List<PushedTransaction>> pushTransactions(@Body List<PushTransactionRequest> pushTransactionRequests);
 
     @POST("/v1/chain/get_required_keys")
     Call<RequiredKeys> getRequiredKeys(@Body RequiredKeysRequest requiredKeysRequest);
@@ -76,5 +80,5 @@ public interface EosApiService {
     Call<Void> setTimeout(@Body Integer timeOut);
 
     @POST("/v1/wallet/sign_transaction")
-    Call<TransactionSignature> signTransaction(@Body SignTransactionRequest unsignedTransaction);
+    Call<PackedTransaction> signTransaction(@Body SignTransactionRequest unsignedTransaction);
 }

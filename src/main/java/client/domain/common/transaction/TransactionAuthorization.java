@@ -1,17 +1,17 @@
-package client.domain.request.wallet.transaction;
+package client.domain.common.transaction;
 
 public class TransactionAuthorization {
 
-    private String account;
+    private String actor;
 
     private String permission;
 
-    public String getAccount() {
-        return account;
+    public String getActor() {
+        return actor;
     }
 
-    public void setAccount(String account) {
-        this.account = account;
+    public void setActor(String actor) {
+        this.actor = actor;
     }
 
     public String getPermission() {

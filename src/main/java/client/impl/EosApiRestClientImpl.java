@@ -4,13 +4,13 @@ package client.impl;
 import client.EosApiRestClient;
 import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.RequiredKeysRequest;
-import client.domain.request.chain.TransactionRequest;
+import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.request.wallet.transaction.SignTransactionRequest;
-import client.domain.request.wallet.transaction.UnsignedTransaction;
 import client.domain.response.chain.*;
 import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
-import client.domain.response.wallet.TransactionSignature;
+import client.domain.common.transaction.PackedTransaction;
+import client.domain.response.chain.transaction.PushedTransaction;
 
 import java.net.Proxy;
 import java.util.*;
@@ -72,13 +72,18 @@ public class EosApiRestClientImpl implements EosApiRestClient{
     }
 
     @Override
-    public void pushTransactions(List<TransactionRequest> transactionRequests){
-        EosApiServiceGenerator.executeSync(eosApiService.pushTransaction(transactionRequests));
+    public PushedTransaction pushTransaction(String compression, PackedTransaction packedTransaction, List<String> signatures){
+        return EosApiServiceGenerator.executeSync(eosApiService.pushTransaction(new PushTransactionRequest(compression, packedTransaction, signatures)));
     }
 
     @Override
-    public RequiredKeys getRequiredKeys(RequiredKeysRequest requiredKeysRequests){
-        return EosApiServiceGenerator.executeSync(eosApiService.getRequiredKeys(requiredKeysRequests));
+    public List<PushedTransaction> pushTransactions(List<PushTransactionRequest> pushTransactionRequests){
+        return EosApiServiceGenerator.executeSync(eosApiService.pushTransactions(pushTransactionRequests));
+    }
+
+    @Override
+    public RequiredKeys getRequiredKeys(PackedTransaction transaction, List<String> keys){
+        return EosApiServiceGenerator.executeSync(eosApiService.getRequiredKeys(new RequiredKeysRequest(transaction, keys)));
     }
 
     @Override
@@ -135,8 +140,8 @@ public class EosApiRestClientImpl implements EosApiRestClient{
     }
 
     @Override
-    public TransactionSignature signTransaction(UnsignedTransaction unsignedTransaction, List<String> publicKeys, String chainId) {
-        return EosApiServiceGenerator.executeSync(eosApiService.signTransaction(new SignTransactionRequest(unsignedTransaction, publicKeys, chainId)));
+    public PackedTransaction signTransaction(PackedTransaction packedTransaction, List<String> publicKeys, String chainId) {
+        return EosApiServiceGenerator.executeSync(eosApiService.signTransaction(new SignTransactionRequest(packedTransaction, publicKeys, chainId)));
     }
 
     @Override
