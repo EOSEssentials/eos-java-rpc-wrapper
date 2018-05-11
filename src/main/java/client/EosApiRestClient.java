@@ -1,5 +1,6 @@
 package client;
 
+import client.domain.common.transaction.SignedPackedTransaction;
 import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.response.chain.*;
 import client.domain.response.chain.account.Account;
@@ -26,7 +27,7 @@ public interface EosApiRestClient {
 
     AbiJsonToBin abiJsonToBin(String code, String action, Map<String, String> args);
 
-    PushedTransaction pushTransaction(String compression, PackedTransaction packedTransaction, List<String> signatures);
+    PushedTransaction pushTransaction(String compression, SignedPackedTransaction packedTransaction);
 
     List<PushedTransaction> pushTransactions(List<PushTransactionRequest> pushTransactionRequests);
 
@@ -50,7 +51,7 @@ public interface EosApiRestClient {
 
     List<String> getPublicKeys();
 
-    PackedTransaction signTransaction(PackedTransaction unsignedTransaction, List<String> publicKeys, String chainId);
+    SignedPackedTransaction signTransaction(PackedTransaction unsignedTransaction, List<String> publicKeys, String chainId);
 
     void setWalletTimeout(Integer timeout);
 }

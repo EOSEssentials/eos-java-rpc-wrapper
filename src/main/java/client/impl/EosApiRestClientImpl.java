@@ -2,6 +2,7 @@ package client.impl;
 
 
 import client.EosApiRestClient;
+import client.domain.common.transaction.SignedPackedTransaction;
 import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.transaction.PushTransactionRequest;
@@ -12,15 +13,15 @@ import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.transaction.PushedTransaction;
 
-import java.net.Proxy;
+
 import java.util.*;
 
 public class EosApiRestClientImpl implements EosApiRestClient{
 
     private final EosApiService eosApiService;
 
-    public EosApiRestClientImpl(String baseUrl, Proxy proxy){
-        eosApiService = EosApiServiceGenerator.createService(EosApiService.class, baseUrl, proxy);
+    public EosApiRestClientImpl(String baseUrl){
+        eosApiService = EosApiServiceGenerator.createService(EosApiService.class, baseUrl);
     }
 
     @Override
@@ -72,8 +73,8 @@ public class EosApiRestClientImpl implements EosApiRestClient{
     }
 
     @Override
-    public PushedTransaction pushTransaction(String compression, PackedTransaction packedTransaction, List<String> signatures){
-        return EosApiServiceGenerator.executeSync(eosApiService.pushTransaction(new PushTransactionRequest(compression, packedTransaction, signatures)));
+    public PushedTransaction pushTransaction(String compression, SignedPackedTransaction packedTransaction){
+        return EosApiServiceGenerator.executeSync(eosApiService.pushTransaction(new PushTransactionRequest(compression, packedTransaction, packedTransaction.getSignatures())));
     }
 
     @Override
@@ -140,7 +141,7 @@ public class EosApiRestClientImpl implements EosApiRestClient{
     }
 
     @Override
-    public PackedTransaction signTransaction(PackedTransaction packedTransaction, List<String> publicKeys, String chainId) {
+    public SignedPackedTransaction signTransaction(PackedTransaction packedTransaction, List<String> publicKeys, String chainId) {
         return EosApiServiceGenerator.executeSync(eosApiService.signTransaction(new SignTransactionRequest(packedTransaction, publicKeys, chainId)));
     }
 

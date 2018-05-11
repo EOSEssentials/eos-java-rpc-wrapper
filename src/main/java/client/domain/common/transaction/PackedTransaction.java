@@ -21,14 +21,11 @@ public class PackedTransaction {
 
     private List<String> contextFreeData;
 
-    private List<String> signatures;
-
     private List<TransactionAction> contextFreeActions;
 
     private List<TransactionAction> actions;
 
     private String delaySec;
-
 
 
     public String getRegion() {
@@ -92,15 +89,6 @@ public class PackedTransaction {
         this.contextFreeData = contextFreeData;
     }
 
-
-    public List<String> getSignatures() {
-        return signatures;
-    }
-
-
-    public void setSignatures(List<String> signatures) {
-        this.signatures = signatures;
-    }
 
     public List<TransactionAction> getContextFreeActions() {
         return contextFreeActions;

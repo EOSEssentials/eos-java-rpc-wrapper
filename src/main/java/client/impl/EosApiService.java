@@ -1,5 +1,6 @@
 package client.impl;
 
+import client.domain.common.transaction.SignedPackedTransaction;
 import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.transaction.PushTransactionRequest;
@@ -80,5 +81,5 @@ public interface EosApiService {
     Call<Void> setTimeout(@Body Integer timeOut);
 
     @POST("/v1/wallet/sign_transaction")
-    Call<PackedTransaction> signTransaction(@Body SignTransactionRequest unsignedTransaction);
+    Call<SignedPackedTransaction> signTransaction(@Body SignTransactionRequest unsignedTransaction);
 }

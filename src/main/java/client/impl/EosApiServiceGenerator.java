@@ -11,7 +11,6 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
-import java.net.Proxy;
 
 public class EosApiServiceGenerator {
 
@@ -23,13 +22,12 @@ public class EosApiServiceGenerator {
 
     private static Retrofit retrofit;
 
-    public static <S> S createService(Class<S> serviceClass, String baseUrl, Proxy proxy) {
+    public static <S> S createService(Class<S> serviceClass, String baseUrl) {
 
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClient.addInterceptor(httpLoggingInterceptor);
 
-        httpClient.proxy(proxy);
         builder.baseUrl(baseUrl);
         builder.client(httpClient.build());
         builder.addConverterFactory(JacksonConverterFactory.create());
