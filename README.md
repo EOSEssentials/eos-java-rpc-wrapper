@@ -1,25 +1,25 @@
-#EOS Java API Wrapper
+# EOS Java API Wrapper
 
 *A Java implementation of the EOS RPC Calls. Under the [MIT Licence](https://raw.githubusercontent.com/Fletch153/eos-java-rpc-wrapper/master/LICENSE)*. 
 
 Created by [Chintai](http://www.chintai-eos.io).
 
 
-####Requirements
+#### Requirements
 * Java 8
 * Maven
 
-####Installation
+#### Installation
 Install using maven build tool. The artifact will need to be published locally.
 
-####Configuration
+#### Configuration
 Create a new instance of EosApiClient using the EosApiClientFactory, this will require
 a baseurl to be passed in.
 
 ```EosApiRestClient eosApiRestClient = EosApiClientFactory.newInstance("http://127.0.0.1:8888").newRestClient();```
 
 
-####Example Usage
+#### Example Usage
 ##### Creating a wallet
 ```eosApiRestClient.createWallet("walletName");```
 
@@ -74,7 +74,7 @@ SignedPackedTransaction signedPackedTransaction = eosApiRestClient.signTransacti
 PushedTransaction = eosApiRestClient.pushTransaction("none", signedPackedTransaction);
 ```
 
-####Notes
+#### Notes
 * All methods are synchronous and blocking.
 * All methods will throw a catchable EOSApiException.
 
