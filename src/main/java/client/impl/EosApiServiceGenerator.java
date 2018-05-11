@@ -3,7 +3,6 @@ package client.impl;
 import client.exception.EosApiError;
 import client.exception.EosApiException;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -23,10 +22,6 @@ public class EosApiServiceGenerator {
     private static Retrofit retrofit;
 
     public static <S> S createService(Class<S> serviceClass, String baseUrl) {
-
-        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        httpClient.addInterceptor(httpLoggingInterceptor);
 
         builder.baseUrl(baseUrl);
         builder.client(httpClient.build());
