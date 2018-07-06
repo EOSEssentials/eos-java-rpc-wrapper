@@ -6,9 +6,13 @@ public class ChainInfo {
 
     private String serverVersion;
 
+    private String chainId;
+
     private String headBlockNum;
 
     private String lastIrreversibleBlockNum;
+
+    private String lastIrreversibleBlockId;
 
     private String headBlockId;
 
@@ -16,9 +20,13 @@ public class ChainInfo {
 
     private String headBlockProducer;
 
-    private String recentSlots;
+    private String virtualBlockCpuLimit;
 
-    private String participationRate;
+    private String virtualBlockNetLimit;
+
+    private String blockCpuLimit;
+
+    private String blockNetLimit;
 
     public ChainInfo(){
 
@@ -31,6 +39,15 @@ public class ChainInfo {
     @JsonProperty("server_version")
     public void setServerVersion(String serverVersion) {
         this.serverVersion = serverVersion;
+    }
+
+    public String getChainId() {
+        return chainId;
+    }
+
+    @JsonProperty("chain_id")
+    public void setChainId(String chainId) {
+        this.chainId = chainId;
     }
 
     public String getHeadBlockNum() {
@@ -49,6 +66,15 @@ public class ChainInfo {
     @JsonProperty("last_irreversible_block_num")
     public void setLastIrreversibleBlockNum(String lastIrreversibleBlockNum) {
         this.lastIrreversibleBlockNum = lastIrreversibleBlockNum;
+    }
+
+    public String getLastIrreversibleBlockId() {
+        return lastIrreversibleBlockId;
+    }
+
+    @JsonProperty("last_irreversible_block_id")
+    public void setLastIrreversibleBlockId(String lastIrreversibleBlockId) {
+        this.lastIrreversibleBlockId = lastIrreversibleBlockId;
     }
 
     public String getHeadBlockId() {
@@ -78,21 +104,39 @@ public class ChainInfo {
         this.headBlockProducer = headBlockProducer;
     }
 
-    public String getParticipationRate() {
-        return participationRate;
+    public String getVirtualBlockCpuLimit() {
+        return virtualBlockCpuLimit;
     }
 
-    @JsonProperty("participation_rate")
-    public void setParticipationRate(String participationRate) {
-        this.participationRate = participationRate;
+    @JsonProperty("virtual_block_cpu_limit")
+    public void setVirtualBlockCpuLimit(String virtualBlockCpuLimit) {
+        this.virtualBlockCpuLimit = virtualBlockCpuLimit;
     }
 
-    public String getRecentSlots() {
-        return recentSlots;
+    public String getVirtualBlockNetLimit() {
+        return virtualBlockNetLimit;
     }
 
-    @JsonProperty("recent_slots")
-    public void setRecentSlots(String recentSlots) {
-        this.recentSlots = recentSlots;
+    @JsonProperty("virtual_block_net_limit")
+    public void setVirtualBlockNetLimit(String virtualBlockNetLimit) {
+        this.virtualBlockNetLimit = virtualBlockNetLimit;
+    }
+
+    public String getBlockCpuLimit() {
+        return blockCpuLimit;
+    }
+
+    @JsonProperty("block_cpu_limit")
+    public void setBlockCpuLimit(String blockCpuLimit) {
+        this.blockCpuLimit = blockCpuLimit;
+    }
+
+    public String getNetCpuLimit() {
+        return blockNetLimit;
+    }
+
+    @JsonProperty("block_net_limit")
+    public void setBlockNetLimit(String blockNetLimit) {
+        this.blockNetLimit = blockNetLimit;
     }
 }
