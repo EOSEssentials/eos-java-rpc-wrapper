@@ -16,7 +16,7 @@ import client.domain.response.chain.transaction.PushedTransaction;
 
 import java.util.*;
 
-public class EosApiRestClientImpl implements EosApiRestClient{
+public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
 
     private final EosApiService eosApiService;
 
@@ -68,7 +68,7 @@ public class EosApiRestClientImpl implements EosApiRestClient{
     }
 
     @Override
-    public AbiJsonToBin abiJsonToBin (String code, String action, Map<String, String> args){
+    public AbiJsonToBin abiJsonToBin (String code, String action, T args){
         return EosApiServiceGenerator.executeSync(eosApiService.abiJsonToBin(new AbiJsonToBinRequest(code, action, args)));
     }
 

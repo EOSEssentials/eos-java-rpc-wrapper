@@ -2,15 +2,15 @@ package client.domain.request.chain;
 
 import java.util.Map;
 
-public class AbiJsonToBinRequest {
+public class AbiJsonToBinRequest<T> {
 
     private String code;
 
     private String action;
 
-    private Map<String, String> args;
+    private T args;
 
-    public AbiJsonToBinRequest(String code, String action, Map<String, String> args) {
+    public AbiJsonToBinRequest(String code, String action, T args) {
         this.code = code;
         this.action = action;
         this.args = args;
@@ -32,11 +32,11 @@ public class AbiJsonToBinRequest {
         this.action = action;
     }
 
-    public Map<String, String> getArgs() {
+    public T getArgs() {
         return args;
     }
 
-    public void setArgs(Map<String, String> args) {
+    public void setArgs(T args) {
         this.args = args;
     }
 }

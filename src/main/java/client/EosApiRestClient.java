@@ -11,7 +11,7 @@ import client.domain.response.chain.transaction.PushedTransaction;
 import java.util.List;
 import java.util.Map;
 
-public interface EosApiRestClient {
+public interface EosApiRestClient<T> {
 
     ChainInfo getChainInfo();
 
@@ -25,7 +25,7 @@ public interface EosApiRestClient {
 
     AbiBinToJson abiBinToJson(String code, String action, String binargs);
 
-    AbiJsonToBin abiJsonToBin(String code, String action, Map<String, String> args);
+    AbiJsonToBin abiJsonToBin(String code, String action, T args);
 
     PushedTransaction pushTransaction(String compression, SignedPackedTransaction packedTransaction);
 
