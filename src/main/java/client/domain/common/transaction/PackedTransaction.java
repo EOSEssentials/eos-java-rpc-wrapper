@@ -17,7 +17,7 @@ public class PackedTransaction {
 
     private String refBlockNum;
 
-    private String maxCpuUsage;
+    private Integer maxCpuUsageMs;
 
     private List<String> contextFreeData;
 
@@ -27,7 +27,7 @@ public class PackedTransaction {
 
     private List<TransactionAction> actions;
 
-    private String delaySec;
+    private Integer delaySec;
 
 
     public String getRegion() {
@@ -64,13 +64,13 @@ public class PackedTransaction {
         this.refBlockPrefix = refBlockPrefix;
     }
 
-    public String getMaxCpuUsage() {
-        return maxCpuUsage;
+    public Integer getMaxCpuUsageMs() {
+        return maxCpuUsageMs;
     }
 
-    @JsonProperty("max_cpu_usage")
-    public void setMaxCpuUsage(String maxCpuUsage) {
-        this.maxCpuUsage = maxCpuUsage;
+    @JsonProperty("max_cpu_usage_ms")
+    public void setMaxCpuUsageMs(Integer maxCpuUsageMs) {
+        this.maxCpuUsageMs = maxCpuUsageMs;
     }
 
     public String getRefBlockNum() {
@@ -109,12 +109,12 @@ public class PackedTransaction {
         this.actions = actions;
     }
 
-    public String getDelaySec() {
+    public Integer getDelaySec() {
         return delaySec;
     }
 
     @JsonProperty("delay_sec")
-    public void setDelaySec(String delaySec) {
+    public void setDelaySec(Integer delaySec) {
         this.delaySec = delaySec;
     }
 
