@@ -17,15 +17,17 @@ public class PackedTransaction {
 
     private String refBlockNum;
 
-    private String maxKcpuUsage;
+    private Integer maxCpuUsageMs;
 
     private List<String> contextFreeData;
+
+    private List<String> transactionExtensions;
 
     private List<TransactionAction> contextFreeActions;
 
     private List<TransactionAction> actions;
 
-    private String delaySec;
+    private Integer delaySec;
 
 
     public String getRegion() {
@@ -62,13 +64,13 @@ public class PackedTransaction {
         this.refBlockPrefix = refBlockPrefix;
     }
 
-    public String getMaxKcpuUsage() {
-        return maxKcpuUsage;
+    public Integer getMaxCpuUsageMs() {
+        return maxCpuUsageMs;
     }
 
-    @JsonProperty("max_kcpu_usage")
-    public void setMaxKcpuUsage(String maxKcpuUsage) {
-        this.maxKcpuUsage = maxKcpuUsage;
+    @JsonProperty("max_cpu_usage_ms")
+    public void setMaxCpuUsageMs(Integer maxCpuUsageMs) {
+        this.maxCpuUsageMs = maxCpuUsageMs;
     }
 
     public String getRefBlockNum() {
@@ -107,13 +109,21 @@ public class PackedTransaction {
         this.actions = actions;
     }
 
-    public String getDelaySec() {
+    public Integer getDelaySec() {
         return delaySec;
     }
 
     @JsonProperty("delay_sec")
-    public void setDelaySec(String delaySec) {
+    public void setDelaySec(Integer delaySec) {
         this.delaySec = delaySec;
     }
 
+    public List<String> getTransactionExtensions() {
+        return transactionExtensions;
+    }
+
+    @JsonProperty("transaction_extensions")
+    public void setTransactionExtensions(List<String> transactionExtensions) {
+        this.transactionExtensions = transactionExtensions;
+    }
 }

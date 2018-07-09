@@ -3,14 +3,15 @@ package client.domain.response.chain.transaction;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+import java.util.Map;
 
 public class ActionTrace {
 
-    private List<DataAccess> dataAccess;
-
     private String console;
 
-    private String cpuUsage;
+    private Integer cpuUsage;
+
+    private Integer totalCpuUsage;
 
     private String receiver;
 
@@ -20,14 +21,13 @@ public class ActionTrace {
 
     private String contextFree;
 
-    public List<DataAccess> getDataAccess() {
-        return dataAccess;
-    }
+    private Receipt receipt;
 
-    @JsonProperty("data_access")
-    public void setDataAccess(List<DataAccess> dataAccess) {
-        this.dataAccess = dataAccess;
-    }
+    private Integer elapsed;
+
+    private List<Map<String, Object>> inlineTraces;
+
+    private String trxId;
 
     public String getConsole() {
         return console;
@@ -37,12 +37,12 @@ public class ActionTrace {
         this.console = console;
     }
 
-    public String getCpuUsage() {
+    public Integer getCpuUsage() {
         return cpuUsage;
     }
 
     @JsonProperty("cpu_usage")
-    public void setCpuUsage(String cpuUsage) {
+    public void setCpuUsage(Integer cpuUsage) {
         this.cpuUsage = cpuUsage;
     }
 
@@ -78,5 +78,48 @@ public class ActionTrace {
     @JsonProperty("context_free")
     public void setContextFree(String contextFree) {
         this.contextFree = contextFree;
+    }
+
+    public Receipt getReceipt() {
+        return receipt;
+    }
+
+    public void setReceipt(Receipt receipt) {
+        this.receipt = receipt;
+    }
+
+    public Integer getElapsed() {
+        return elapsed;
+    }
+
+    public void setElapsed(Integer elapsed) {
+        this.elapsed = elapsed;
+    }
+
+    public List<Map<String, Object>> getInlineTraces() {
+        return inlineTraces;
+    }
+
+    @JsonProperty("inline_traces")
+    public void setInlineTraces(List<Map<String, Object>> inlineTraces) {
+        this.inlineTraces = inlineTraces;
+    }
+
+    public Integer getTotalCpuUsage() {
+        return totalCpuUsage;
+    }
+
+    @JsonProperty("total_cpu_usage")
+    public void setTotalCpuUsage(Integer totalCpuUsage) {
+        this.totalCpuUsage = totalCpuUsage;
+    }
+
+    public String getTrxId() {
+        return trxId;
+    }
+
+    @JsonProperty("trx_id")
+    public void setTrxId(String trxId) {
+        this.trxId = trxId;
     }
 }
