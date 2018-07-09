@@ -3,6 +3,7 @@ package client.domain.response.chain.transaction;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+import java.util.Map;
 
 public class ActionTrace {
 
@@ -24,7 +25,7 @@ public class ActionTrace {
 
     private Integer elapsed;
 
-    private List<String> inlineTraces;
+    private List<Map<String, Object>> inlineTraces;
 
     private String trxId;
 
@@ -95,12 +96,12 @@ public class ActionTrace {
         this.elapsed = elapsed;
     }
 
-    public List<String> getInlineTraces() {
+    public List<Map<String, Object>> getInlineTraces() {
         return inlineTraces;
     }
 
     @JsonProperty("inline_traces")
-    public void setInlineTraces(List<String> inlineTraces) {
+    public void setInlineTraces(List<Map<String, Object>> inlineTraces) {
         this.inlineTraces = inlineTraces;
     }
 
