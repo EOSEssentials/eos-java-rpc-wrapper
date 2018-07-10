@@ -10,6 +10,7 @@ import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.transaction.PushedTransaction;
+import client.domain.response.history.action.Actions;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -82,4 +83,7 @@ public interface EosApiService {
 
     @POST("/v1/wallet/sign_transaction")
     Call<SignedPackedTransaction> signTransaction(@Body SignTransactionRequest unsignedTransaction);
+
+    @POST("/v1/history/get_actions")
+    Call<Actions> getActions(@Body Map<String, Object> requestFields);
 }

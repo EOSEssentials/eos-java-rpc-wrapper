@@ -7,6 +7,7 @@ import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.transaction.PushedTransaction;
+import client.domain.response.history.action.Actions;
 
 import java.util.List;
 import java.util.Map;
@@ -54,4 +55,6 @@ public interface EosApiRestClient<T> {
     SignedPackedTransaction signTransaction(PackedTransaction unsignedTransaction, List<String> publicKeys, String chainId);
 
     void setWalletTimeout(Integer timeout);
+
+    Actions getActions(String accountName, Integer pos, Integer offset);
 }
