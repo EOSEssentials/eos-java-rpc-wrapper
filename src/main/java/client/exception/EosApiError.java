@@ -45,4 +45,11 @@ public class EosApiError {
                 .toString();
     }
 
+    public String getDetailedMessage() {
+        if (error == null) {
+            return message;
+        } else {
+            return message + ": " + error.getWhat();
+        }
+    }
 }
