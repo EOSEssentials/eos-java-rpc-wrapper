@@ -8,7 +8,6 @@ import client.domain.request.wallet.transaction.SignTransactionRequest;
 import client.domain.response.chain.*;
 import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
-import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
 import retrofit2.Call;

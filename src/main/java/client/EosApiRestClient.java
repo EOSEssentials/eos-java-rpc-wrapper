@@ -10,7 +10,6 @@ import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
 
 import java.util.List;
-import java.util.Map;
 
 public interface EosApiRestClient<T> {
 
