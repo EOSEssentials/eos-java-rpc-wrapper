@@ -10,6 +10,8 @@ public class RequiredAuth {
 
     private String threshold;
 
+    private List<Wait> waits;
+
     public List<String> getAccounts ()
     {
         return accounts;
@@ -38,5 +40,13 @@ public class RequiredAuth {
     public void setThreshold (String threshold)
     {
         this.threshold = threshold;
+    }
+
+    public List<Wait> getWaits() {
+        return waits;
+    }
+
+    public void setWaits(List<Wait> waits) {
+        this.waits = waits;
     }
 }
