@@ -67,6 +67,17 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
     }
 
     @Override
+    public List<String> getCurrencyBalance(String code, String accountName, String symbol){
+        LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(3);
+
+        requestParameters.put("code", code);
+        requestParameters.put("account", accountName);
+        requestParameters.put("symbol", symbol);
+
+        return EosApiServiceGenerator.executeSync(eosApiService.getCurrencyBalance(requestParameters));
+    }
+
+    @Override
     public AbiBinToJson abiBinToJson(String code, String action, String binargs){
         LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(3);
 

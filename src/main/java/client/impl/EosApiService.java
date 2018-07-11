@@ -47,6 +47,9 @@ public interface EosApiService {
     @POST("/v1/chain/get_table_rows")
     Call<TableRow> getTableRows(@Body Map<String, String> requestFields);
 
+    @POST("/v1/chain/get_currency_balance")
+    Call<List<String>> getCurrencyBalance(@Body Map<String, String> requestFields);
+
     @POST("/v1/chain/abi_json_to_bin")
     Call<AbiJsonToBin> abiJsonToBin(@Body AbiJsonToBinRequest abiJsonToBinRequest);
 

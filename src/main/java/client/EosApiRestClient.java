@@ -29,6 +29,8 @@ public interface EosApiRestClient<T> {
 
     TableRow getTableRows(String scope, String code, String table);
 
+    List<String> getCurrencyBalance(String code, String accountName, String symbol);
+
     AbiBinToJson abiBinToJson(String code, String action, String binargs);
 
     AbiJsonToBin abiJsonToBin(String code, String action, T args);
