@@ -13,8 +13,6 @@ public class Authorization {
 
     private String permission;
 
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
     public String getActor() {
         return actor;
     }
