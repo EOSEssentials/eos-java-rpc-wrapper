@@ -46,11 +46,8 @@ public class EosApiError {
     }
 
     public String getDetailedMessage() {
-        if (error == null) {
-            return message;
-        } else {
-            return message + ": " + error.getWhat();
-        }
+        return error == null ? message : message + ": " + error.getWhat();
+    }
 
     public String getEosErrorCode() {
         return error == null ? null : error.getCode();

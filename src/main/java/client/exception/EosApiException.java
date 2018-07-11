@@ -19,9 +19,6 @@ public class EosApiException extends RuntimeException {
 
     @Override
     public String getMessage() {
-        if (error != null) {
-            return error.getDetailedMessage();
-        }
-        return super.getMessage();
+        return error == null ? super.getMessage() : error.getDetailedMessage();
     }
 }
