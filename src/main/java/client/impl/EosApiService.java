@@ -10,6 +10,7 @@ import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
+import client.domain.response.history.transaction.Transaction;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -85,4 +86,7 @@ public interface EosApiService {
 
     @POST("/v1/history/get_actions")
     Call<Actions> getActions(@Body Map<String, Object> requestFields);
+
+    @POST("/v1/history/get_transaction")
+    Call<Transaction> getTransaction(@Body Map<String, Object> requestFields);
 }

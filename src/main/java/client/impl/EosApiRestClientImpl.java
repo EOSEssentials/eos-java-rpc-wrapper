@@ -13,6 +13,7 @@ import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
+import client.domain.response.history.transaction.Transaction;
 
 
 import java.util.*;
@@ -162,4 +163,12 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
         return EosApiServiceGenerator.executeSync(eosApiService.getActions(requestParameters));
     }
 
+    @Override
+    public Transaction getTransaction(String id){
+        LinkedHashMap<String, Object> requestParameters = new LinkedHashMap<>(1);
+
+        requestParameters.put("id", id);
+
+        return EosApiServiceGenerator.executeSync(eosApiService.getTransaction(requestParameters));
+    }
 }
