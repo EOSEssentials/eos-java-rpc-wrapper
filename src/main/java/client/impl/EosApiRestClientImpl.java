@@ -13,6 +13,7 @@ import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
+import client.domain.response.history.keyaccounts.KeyAccounts;
 import client.domain.response.history.transaction.Transaction;
 
 
@@ -171,4 +172,14 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
 
         return EosApiServiceGenerator.executeSync(eosApiService.getTransaction(requestParameters));
     }
+
+    @Override
+    public KeyAccounts getKeyAccounts(String publicKey){
+        LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(1);
+
+        requestParameters.put("public_key", publicKey);
+
+        return EosApiServiceGenerator.executeSync(eosApiService.getKeyAccounts(requestParameters));
+    }
+
 }

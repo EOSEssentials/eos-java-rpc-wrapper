@@ -8,6 +8,7 @@ import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
+import client.domain.response.history.keyaccounts.KeyAccounts;
 import client.domain.response.history.transaction.Transaction;
 
 import java.util.List;
@@ -60,5 +61,6 @@ public interface EosApiRestClient<T> {
 
     Transaction getTransaction(String id);
 
+    KeyAccounts getKeyAccounts(String publicKey);
 
 }

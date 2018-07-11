@@ -1,23 +1,29 @@
 package client.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import client.domain.common.transaction.SignedPackedTransaction;
 import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.request.wallet.transaction.SignTransactionRequest;
-import client.domain.response.chain.*;
+import client.domain.response.chain.AbiBinToJson;
+import client.domain.response.chain.AbiJsonToBin;
+import client.domain.response.chain.Block;
+import client.domain.response.chain.ChainInfo;
+import client.domain.response.chain.RequiredKeys;
+import client.domain.response.chain.TableRow;
 import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
+import client.domain.response.history.keyaccounts.KeyAccounts;
 import client.domain.response.history.transaction.Transaction;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-
-import java.util.List;
-import java.util.Map;
 
 public interface EosApiService {
 
@@ -89,4 +95,8 @@ public interface EosApiService {
 
     @POST("/v1/history/get_transaction")
     Call<Transaction> getTransaction(@Body Map<String, String> requestFields);
+
+    @POST("/v1/history/get_key_accounts")
+    Call<KeyAccounts> getKeyAccounts(@Body Map<String, String> requestFields);
+
 }
