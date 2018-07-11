@@ -99,6 +99,9 @@ public interface EosApiService {
     @POST("/v1/wallet/set_timeout")
     Call<Void> setTimeout(@Body Integer timeOut);
 
+    @POST("/v1/wallet/sign_digest")
+    Call<String> signDigest(@Body List<String> parameters);
+
     @POST("/v1/wallet/create_key")
     Call<String> createKey(@Body List<String> parameters);
 

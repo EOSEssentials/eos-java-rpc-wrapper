@@ -184,6 +184,11 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
     }
 
     @Override
+    public String signDigest(String digest, String publicKey){
+        return EosApiServiceGenerator.executeSync(eosApiService.signDigest(Arrays.asList(digest, publicKey)));
+    }
+
+    @Override
     public String createKey(String walletName, WalletKeyType keyType){
         return EosApiServiceGenerator.executeSync(eosApiService.createKey(Arrays.asList(walletName, keyType.name())));
     }

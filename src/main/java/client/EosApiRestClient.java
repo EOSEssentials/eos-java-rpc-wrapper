@@ -68,6 +68,8 @@ public interface EosApiRestClient<T> {
 
     void setWalletTimeout(Integer timeout);
 
+    String signDigest(String digest, String publicKey);
+
     String createKey(String walletName, WalletKeyType walletKeyType);
 
     Actions getActions(String accountName, Integer pos, Integer offset);
