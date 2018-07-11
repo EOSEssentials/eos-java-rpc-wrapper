@@ -9,6 +9,7 @@ import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.request.wallet.transaction.SignTransactionRequest;
 import client.domain.response.chain.*;
 import client.domain.response.chain.account.Account;
+import client.domain.response.chain.abi.Abi;
 import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.transaction.PushedTransaction;
@@ -41,6 +42,11 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
     @Override
     public Account getAccount(String accountName){
         return EosApiServiceGenerator.executeSync(eosApiService.getAccount(Collections.singletonMap("account_name", accountName)));
+    }
+
+    @Override
+    public Abi getAbi(String accountName){
+        return EosApiServiceGenerator.executeSync(eosApiService.getAbi(Collections.singletonMap("account_name", accountName)));
     }
 
     @Override

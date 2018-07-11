@@ -4,6 +4,7 @@ import client.domain.common.transaction.SignedPackedTransaction;
 import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.response.chain.*;
 import client.domain.response.chain.account.Account;
+import client.domain.response.chain.abi.Abi;
 import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.transaction.PushedTransaction;
@@ -21,6 +22,8 @@ public interface EosApiRestClient<T> {
     Block getBlock(String blockNumberOrId);
 
     Account getAccount(String accountName);
+
+    Abi getAbi(String accountName);
 
     Code getCode(String accountName);
 

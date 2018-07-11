@@ -15,6 +15,7 @@ import client.domain.response.chain.ChainInfo;
 import client.domain.response.chain.RequiredKeys;
 import client.domain.response.chain.TableRow;
 import client.domain.response.chain.account.Account;
+import client.domain.response.chain.abi.Abi;
 import client.domain.response.chain.code.Code;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
@@ -36,6 +37,9 @@ public interface EosApiService {
 
     @POST("/v1/chain/get_account")
     Call<Account> getAccount(@Body Map<String, String> requestFields);
+
+    @POST("/v1/chain/get_abi")
+    Call<Abi> getAbi(@Body Map<String, String> requestFields);
 
     @POST("/v1/chain/get_code")
     Call<Code> getCode(@Body Map<String, String> requestFields);
