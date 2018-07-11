@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class AbiBinToJson {
 
-    private Map<String, String> args;
+    private Object args;
 
     private List<String> requiredScope;
 
@@ -18,11 +18,11 @@ public class AbiBinToJson {
 
     }
 
-    public Map<String, String> getArgs() {
+    public Object getArgs() {
         return args;
     }
 
-    public void setArgs(Map<String, String> args) {
+    public void setArgs(Object args) {
         this.args = args;
     }
 
