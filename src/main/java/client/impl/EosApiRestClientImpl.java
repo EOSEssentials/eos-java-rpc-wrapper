@@ -165,7 +165,7 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
 
     @Override
     public Transaction getTransaction(String id){
-        LinkedHashMap<String, Object> requestParameters = new LinkedHashMap<>(1);
+        LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(1);
 
         requestParameters.put("id", id);
 

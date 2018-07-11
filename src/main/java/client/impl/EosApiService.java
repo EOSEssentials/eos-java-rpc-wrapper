@@ -88,5 +88,5 @@ public interface EosApiService {
     Call<Actions> getActions(@Body Map<String, Object> requestFields);
 
     @POST("/v1/history/get_transaction")
-    Call<Transaction> getTransaction(@Body Map<String, Object> requestFields);
+    Call<Transaction> getTransaction(@Body Map<String, String> requestFields);
 }
