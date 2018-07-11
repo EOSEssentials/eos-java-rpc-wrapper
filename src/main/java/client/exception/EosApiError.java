@@ -51,5 +51,8 @@ public class EosApiError {
         } else {
             return message + ": " + error.getWhat();
         }
+
+    public String getEosErrorCode() {
+        return error == null ? null : error.getCode();
     }
 }

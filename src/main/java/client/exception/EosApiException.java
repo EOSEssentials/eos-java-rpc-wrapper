@@ -13,6 +13,10 @@ public class EosApiException extends RuntimeException {
         super(cause);
     }
 
+    public String getErrorCode() {
+        return error != null ? error.getEosErrorCode() : null;
+    }
+
     @Override
     public String getMessage() {
         if (error != null) {
