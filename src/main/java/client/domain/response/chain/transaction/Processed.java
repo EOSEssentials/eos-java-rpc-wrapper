@@ -2,6 +2,7 @@ package client.domain.response.chain.transaction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import client.domain.common.ActionTrace;
 
 import java.util.List;
 

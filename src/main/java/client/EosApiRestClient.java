@@ -59,4 +59,6 @@ public interface EosApiRestClient<T> {
     Actions getActions(String accountName, Integer pos, Integer offset);
 
     Transaction getTransaction(String id);
+
+
 }

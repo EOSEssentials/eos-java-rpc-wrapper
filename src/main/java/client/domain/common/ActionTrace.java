@@ -1,5 +1,4 @@
-
-package client.domain.response.history.action;
+package client.domain.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

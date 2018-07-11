@@ -1,6 +1,7 @@
 
-package client.domain.response.history.action;
+package client.domain.common;
 
+import client.domain.response.history.Authorization;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;

@@ -1,7 +1,7 @@
-
 package client.domain.response.history.transaction;
 
 import java.util.List;
+import client.domain.common.ActionTrace;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Transaction {
@@ -16,7 +16,7 @@ public class Transaction {
 
     private Integer lastIrreversibleBlock;
 
-    private List<Trace> traces = null;
+    private List<ActionTrace> traces = null;
 
     public String getId() {
         return id;
@@ -63,12 +63,12 @@ public class Transaction {
         this.lastIrreversibleBlock = lastIrreversibleBlock;
     }
 
-    public List<Trace> getTraces() {
+    public List<ActionTrace> getTraces() {
         return traces;
     }
 
     @JsonProperty("traces")
-    public void setTraces(List<Trace> traces) {
+    public void setTraces(List<ActionTrace> traces) {
         this.traces = traces;
     }
 
