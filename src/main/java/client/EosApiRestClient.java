@@ -7,6 +7,7 @@ import client.domain.response.chain.account.Account;
 import client.domain.response.chain.abi.Abi;
 import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
+import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
 import client.domain.response.history.controlledaccounts.ControlledAccounts;
@@ -14,6 +15,7 @@ import client.domain.response.history.keyaccounts.KeyAccounts;
 import client.domain.response.history.transaction.Transaction;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EosApiRestClient<T> {
 
@@ -40,6 +42,8 @@ public interface EosApiRestClient<T> {
     List<PushedTransaction> pushTransactions(List<PushTransactionRequest> pushTransactionRequests);
 
     RequiredKeys getRequiredKeys(PackedTransaction transaction, List<String> keys);
+
+    Map<String, CurrencyStats> getCurrencyStats(String code, String symbol);
 
     String createWallet(String walletName);
 

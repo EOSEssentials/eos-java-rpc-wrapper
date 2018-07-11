@@ -12,6 +12,7 @@ import client.domain.response.chain.account.Account;
 import client.domain.response.chain.abi.Abi;
 import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
+import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
 import client.domain.response.history.controlledaccounts.ControlledAccounts;
@@ -106,6 +107,16 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
     @Override
     public RequiredKeys getRequiredKeys(PackedTransaction transaction, List<String> keys){
         return EosApiServiceGenerator.executeSync(eosApiService.getRequiredKeys(new RequiredKeysRequest(transaction, keys)));
+    }
+
+    @Override
+    public Map<String, CurrencyStats> getCurrencyStats(String code, String symbol){
+        LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(2);
+
+        requestParameters.put("code", code);
+        requestParameters.put("symbol", symbol);
+
+        return EosApiServiceGenerator.executeSync(eosApiService.getCurrencyStats(requestParameters));
     }
 
     @Override

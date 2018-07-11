@@ -17,6 +17,7 @@ import client.domain.response.chain.TableRow;
 import client.domain.response.chain.account.Account;
 import client.domain.response.chain.abi.Abi;
 import client.domain.response.chain.code.Code;
+import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
 import client.domain.response.history.controlledaccounts.ControlledAccounts;
@@ -64,6 +65,9 @@ public interface EosApiService {
 
     @POST("/v1/chain/get_required_keys")
     Call<RequiredKeys> getRequiredKeys(@Body RequiredKeysRequest requiredKeysRequest);
+
+    @POST("/v1/chain/get_currency_stats")
+    Call<Map<String, CurrencyStats>> getCurrencyStats(@Body Map<String, String> requestFields);
 
     @POST("/v1/wallet/create")
     Call<String> createWallet(@Body String walletName);
