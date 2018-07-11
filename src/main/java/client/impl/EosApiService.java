@@ -18,6 +18,7 @@ import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
+import client.domain.response.history.controlledaccounts.ControlledAccounts;
 import client.domain.response.history.keyaccounts.KeyAccounts;
 import client.domain.response.history.transaction.Transaction;
 import retrofit2.Call;
@@ -98,5 +99,8 @@ public interface EosApiService {
 
     @POST("/v1/history/get_key_accounts")
     Call<KeyAccounts> getKeyAccounts(@Body Map<String, String> requestFields);
+
+    @POST("/v1/history/get_controlled_accounts")
+    Call<ControlledAccounts> getControlledAccounts(@Body Map<String, String> requestFields);
 
 }

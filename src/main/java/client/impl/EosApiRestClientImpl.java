@@ -13,6 +13,7 @@ import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
+import client.domain.response.history.controlledaccounts.ControlledAccounts;
 import client.domain.response.history.keyaccounts.KeyAccounts;
 import client.domain.response.history.transaction.Transaction;
 
@@ -180,6 +181,15 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
         requestParameters.put("public_key", publicKey);
 
         return EosApiServiceGenerator.executeSync(eosApiService.getKeyAccounts(requestParameters));
+    }
+
+    @Override
+    public ControlledAccounts getControlledAccounts(String controllingAccountName){
+        LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(1);
+
+        requestParameters.put("controlling_account", controllingAccountName);
+
+        return EosApiServiceGenerator.executeSync(eosApiService.getControlledAccounts(requestParameters));
     }
 
 }
