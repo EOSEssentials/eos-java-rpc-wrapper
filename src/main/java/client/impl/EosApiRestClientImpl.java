@@ -2,6 +2,7 @@ package client.impl;
 
 
 import client.EosApiRestClient;
+import client.domain.common.WalletKeyType;
 import client.domain.common.transaction.SignedPackedTransaction;
 import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.RequiredKeysRequest;
@@ -180,6 +181,11 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
     @Override
     public void setWalletTimeout(Integer timeout){
         EosApiServiceGenerator.executeSync(eosApiService.setTimeout(timeout));
+    }
+
+    @Override
+    public String createKey(String walletName, WalletKeyType keyType){
+        return EosApiServiceGenerator.executeSync(eosApiService.createKey(Arrays.asList(walletName, keyType.name())));
     }
 
     @Override

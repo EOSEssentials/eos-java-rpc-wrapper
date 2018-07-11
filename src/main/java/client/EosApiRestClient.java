@@ -1,5 +1,6 @@
 package client;
 
+import client.domain.common.WalletKeyType;
 import client.domain.common.transaction.SignedPackedTransaction;
 import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.response.chain.*;
@@ -66,6 +67,8 @@ public interface EosApiRestClient<T> {
     SignedPackedTransaction signTransaction(PackedTransaction unsignedTransaction, List<String> publicKeys, String chainId);
 
     void setWalletTimeout(Integer timeout);
+
+    String createKey(String walletName, WalletKeyType walletKeyType);
 
     Actions getActions(String accountName, Integer pos, Integer offset);
 
