@@ -16,7 +16,7 @@ public class Table {
 
     private List<String> keyTypes;
 
-    public Table(){
+    public Table() {
 
     }
 

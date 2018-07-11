@@ -1,6 +1,7 @@
 package client.domain.common;
 
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Receipt {

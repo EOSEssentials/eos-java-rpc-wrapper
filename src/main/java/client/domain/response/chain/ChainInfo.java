@@ -28,7 +28,7 @@ public class ChainInfo {
 
     private String blockNetLimit;
 
-    public ChainInfo(){
+    public ChainInfo() {
 
     }
 

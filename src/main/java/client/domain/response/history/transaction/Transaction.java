@@ -1,6 +1,7 @@
 package client.domain.response.history.transaction;
 
 import java.util.List;
+
 import client.domain.common.ActionTrace;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

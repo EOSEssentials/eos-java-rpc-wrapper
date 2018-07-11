@@ -10,7 +10,7 @@ public class Struct {
 
     private List<StructField> fields;
 
-    public Struct(){
+    public Struct() {
 
     }
 

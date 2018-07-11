@@ -8,7 +8,7 @@ public class RequiredKeys {
 
     private List<String> requiredKeys;
 
-    public RequiredKeys(){
+    public RequiredKeys() {
 
     }
 

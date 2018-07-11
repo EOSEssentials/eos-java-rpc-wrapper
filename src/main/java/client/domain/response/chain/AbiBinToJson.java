@@ -4,7 +4,6 @@ package client.domain.response.chain;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
-import java.util.Map;
 
 public class AbiBinToJson {
 
@@ -14,7 +13,7 @@ public class AbiBinToJson {
 
     private List<String> requiredAuth;
 
-    public AbiBinToJson(){
+    public AbiBinToJson() {
 
     }
 

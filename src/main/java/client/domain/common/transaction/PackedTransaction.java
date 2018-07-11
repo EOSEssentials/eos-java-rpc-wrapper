@@ -97,7 +97,7 @@ public class PackedTransaction {
     }
 
     @JsonProperty("context_free_actions")
-    public void setContextFreeActions(List<TransactionAction>contextFreeActions) {
+    public void setContextFreeActions(List<TransactionAction> contextFreeActions) {
         this.contextFreeActions = contextFreeActions;
     }
 

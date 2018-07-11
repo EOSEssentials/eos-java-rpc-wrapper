@@ -30,24 +30,24 @@ public class Block {
 
     private Long refBlockPrefix;
 
-    public Block(){
+    public Block() {
     }
 
-    public String getActionMerkleRoot(){
+    public String getActionMerkleRoot() {
         return actionMerkleRoot;
     }
 
     @JsonProperty("action_mroot")
-    public void setActionMerkleRoot(String actionMerkleRoot){
+    public void setActionMerkleRoot(String actionMerkleRoot) {
         this.actionMerkleRoot = actionMerkleRoot;
     }
 
-    public String getBlockMerkleRoot(){
+    public String getBlockMerkleRoot() {
         return blockMerkleRoot;
     }
 
     @JsonProperty("block_mroot")
-    public void setBlockMerkleRoot(String blockMerkleRoot){
+    public void setBlockMerkleRoot(String blockMerkleRoot) {
         this.blockMerkleRoot = blockMerkleRoot;
     }
 

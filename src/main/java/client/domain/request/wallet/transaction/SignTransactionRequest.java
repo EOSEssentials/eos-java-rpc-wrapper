@@ -15,7 +15,7 @@ public class SignTransactionRequest {
 
     private String chainId;
 
-    public SignTransactionRequest(PackedTransaction packedTransaction, List<String> publicKeys, String chainId){
+    public SignTransactionRequest(PackedTransaction packedTransaction, List<String> publicKeys, String chainId) {
         this.packedTransaction = packedTransaction;
         this.publicKeys = publicKeys;
         this.chainId = chainId;

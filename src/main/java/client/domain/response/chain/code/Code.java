@@ -13,7 +13,7 @@ public class Code {
 
     private Abi abi;
 
-    public Code(){
+    public Code() {
 
     }
 

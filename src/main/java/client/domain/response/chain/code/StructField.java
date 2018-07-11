@@ -10,7 +10,7 @@ public class StructField {
 
     private String type;
 
-    public StructField(){
+    public StructField() {
 
     }
 

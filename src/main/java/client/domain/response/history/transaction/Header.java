@@ -2,6 +2,7 @@
 package client.domain.response.history.transaction;
 
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Header {

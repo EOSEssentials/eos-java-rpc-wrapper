@@ -12,7 +12,7 @@ public class Permission {
 
     private RequiredAuth requiredAuth;
 
-    public Permission(){
+    public Permission() {
 
     }
 

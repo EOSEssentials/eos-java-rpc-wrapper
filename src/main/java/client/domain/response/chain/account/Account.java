@@ -21,7 +21,7 @@ public class Account {
 
     private List<Permission> permissions;
 
-    public Account(){
+    public Account() {
 
     }
 
