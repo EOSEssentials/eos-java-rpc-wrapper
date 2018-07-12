@@ -2,17 +2,17 @@ package client.domain.response.chain.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
-
 public class Permission {
 
     private String name;
 
     private String parent;
 
-    private List<RequiredAuth> requiredAuth;
+    private String permName;
 
-    public Permission(){
+    private RequiredAuth requiredAuth;
+
+    public Permission() {
 
     }
 
@@ -32,12 +32,21 @@ public class Permission {
         this.parent = parent;
     }
 
-    @JsonProperty("required_ath")
-    public List<RequiredAuth> getRequiredAuth() {
+    @JsonProperty("required_auth")
+    public RequiredAuth getRequiredAuth() {
         return requiredAuth;
     }
 
-    public void setRequiredAuth(List<RequiredAuth> requiredAuth) {
+    public void setRequiredAuth(RequiredAuth requiredAuth) {
         this.requiredAuth = requiredAuth;
+    }
+
+    public String getPermName() {
+        return permName;
+    }
+
+    @JsonProperty("perm_name")
+    public void setPermName(String permName) {
+        this.permName = permName;
     }
 }

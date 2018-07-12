@@ -14,7 +14,7 @@ public class TransactionAction {
 
     private String data;
 
-    public TransactionAction(){
+    public TransactionAction() {
 
     }
 

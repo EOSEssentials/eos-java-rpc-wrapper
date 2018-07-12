@@ -10,7 +10,7 @@ public class Action {
 
     private String type;
 
-    public Action(){
+    public Action() {
 
     }
 

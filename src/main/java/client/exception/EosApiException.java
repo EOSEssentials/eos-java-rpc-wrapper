@@ -13,11 +13,12 @@ public class EosApiException extends RuntimeException {
         super(cause);
     }
 
+    public String getErrorCode() {
+        return error != null ? error.getEosErrorCode() : null;
+    }
+
     @Override
     public String getMessage() {
-        if (error != null) {
-            return error.getMessage();
-        }
-        return super.getMessage();
+        return error == null ? super.getMessage() : error.getDetailedMessage();
     }
 }

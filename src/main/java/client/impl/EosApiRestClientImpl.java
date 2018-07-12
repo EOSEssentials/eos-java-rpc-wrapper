@@ -2,6 +2,7 @@ package client.impl;
 
 
 import client.EosApiRestClient;
+import client.domain.common.WalletKeyType;
 import client.domain.common.transaction.SignedPackedTransaction;
 import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.RequiredKeysRequest;
@@ -9,9 +10,15 @@ import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.request.wallet.transaction.SignTransactionRequest;
 import client.domain.response.chain.*;
 import client.domain.response.chain.account.Account;
+import client.domain.response.chain.abi.Abi;
 import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
+import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
+import client.domain.response.history.action.Actions;
+import client.domain.response.history.controlledaccounts.ControlledAccounts;
+import client.domain.response.history.keyaccounts.KeyAccounts;
+import client.domain.response.history.transaction.Transaction;
 
 
 import java.util.*;
@@ -40,6 +47,11 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
     }
 
     @Override
+    public Abi getAbi(String accountName){
+        return EosApiServiceGenerator.executeSync(eosApiService.getAbi(Collections.singletonMap("account_name", accountName)));
+    }
+
+    @Override
     public Code getCode(String accountName){
         return EosApiServiceGenerator.executeSync(eosApiService.getCode(Collections.singletonMap("account_name", accountName)));
     }
@@ -54,6 +66,17 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
         requestParameters.put("json", "true");
 
         return EosApiServiceGenerator.executeSync(eosApiService.getTableRows(requestParameters));
+    }
+
+    @Override
+    public List<String> getCurrencyBalance(String code, String accountName, String symbol){
+        LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(3);
+
+        requestParameters.put("code", code);
+        requestParameters.put("account", accountName);
+        requestParameters.put("symbol", symbol);
+
+        return EosApiServiceGenerator.executeSync(eosApiService.getCurrencyBalance(requestParameters));
     }
 
     @Override
@@ -85,6 +108,16 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
     @Override
     public RequiredKeys getRequiredKeys(PackedTransaction transaction, List<String> keys){
         return EosApiServiceGenerator.executeSync(eosApiService.getRequiredKeys(new RequiredKeysRequest(transaction, keys)));
+    }
+
+    @Override
+    public Map<String, CurrencyStats> getCurrencyStats(String code, String symbol){
+        LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(2);
+
+        requestParameters.put("code", code);
+        requestParameters.put("symbol", symbol);
+
+        return EosApiServiceGenerator.executeSync(eosApiService.getCurrencyStats(requestParameters));
     }
 
     @Override
@@ -150,5 +183,52 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
         EosApiServiceGenerator.executeSync(eosApiService.setTimeout(timeout));
     }
 
+    @Override
+    public String signDigest(String digest, String publicKey){
+        return EosApiServiceGenerator.executeSync(eosApiService.signDigest(Arrays.asList(digest, publicKey)));
+    }
+
+    @Override
+    public String createKey(String walletName, WalletKeyType keyType){
+        return EosApiServiceGenerator.executeSync(eosApiService.createKey(Arrays.asList(walletName, keyType.name())));
+    }
+
+    @Override
+    public Actions getActions(String accountName, Integer pos, Integer offset){
+        LinkedHashMap<String, Object> requestParameters = new LinkedHashMap<>(3);
+
+        requestParameters.put("account_name", accountName);
+        requestParameters.put("pos", pos);
+        requestParameters.put("offset", offset);
+
+        return EosApiServiceGenerator.executeSync(eosApiService.getActions(requestParameters));
+    }
+
+    @Override
+    public Transaction getTransaction(String id){
+        LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(1);
+
+        requestParameters.put("id", id);
+
+        return EosApiServiceGenerator.executeSync(eosApiService.getTransaction(requestParameters));
+    }
+
+    @Override
+    public KeyAccounts getKeyAccounts(String publicKey){
+        LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(1);
+
+        requestParameters.put("public_key", publicKey);
+
+        return EosApiServiceGenerator.executeSync(eosApiService.getKeyAccounts(requestParameters));
+    }
+
+    @Override
+    public ControlledAccounts getControlledAccounts(String controllingAccountName){
+        LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(1);
+
+        requestParameters.put("controlling_account", controllingAccountName);
+
+        return EosApiServiceGenerator.executeSync(eosApiService.getControlledAccounts(requestParameters));
+    }
 
 }

@@ -6,7 +6,7 @@ public class Key {
 
     private Long weight;
 
-    public Key(){
+    public Key() {
 
     }
 

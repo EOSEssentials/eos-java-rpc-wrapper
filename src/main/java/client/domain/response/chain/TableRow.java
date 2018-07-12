@@ -1,6 +1,5 @@
 package client.domain.response.chain;
 
-
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +9,7 @@ public class TableRow {
 
     private Boolean more;
 
-    public TableRow(){
+    public TableRow() {
 
     }
 

@@ -1,22 +1,32 @@
 package client.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import client.domain.common.transaction.SignedPackedTransaction;
 import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.request.wallet.transaction.SignTransactionRequest;
-import client.domain.response.chain.*;
+import client.domain.response.chain.AbiBinToJson;
+import client.domain.response.chain.AbiJsonToBin;
+import client.domain.response.chain.Block;
+import client.domain.response.chain.ChainInfo;
+import client.domain.response.chain.RequiredKeys;
+import client.domain.response.chain.TableRow;
 import client.domain.response.chain.account.Account;
+import client.domain.response.chain.abi.Abi;
 import client.domain.response.chain.code.Code;
-import client.domain.common.transaction.PackedTransaction;
+import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
+import client.domain.response.history.action.Actions;
+import client.domain.response.history.controlledaccounts.ControlledAccounts;
+import client.domain.response.history.keyaccounts.KeyAccounts;
+import client.domain.response.history.transaction.Transaction;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-
-import java.util.List;
-import java.util.Map;
 
 public interface EosApiService {
 
@@ -29,11 +39,17 @@ public interface EosApiService {
     @POST("/v1/chain/get_account")
     Call<Account> getAccount(@Body Map<String, String> requestFields);
 
+    @POST("/v1/chain/get_abi")
+    Call<Abi> getAbi(@Body Map<String, String> requestFields);
+
     @POST("/v1/chain/get_code")
     Call<Code> getCode(@Body Map<String, String> requestFields);
 
     @POST("/v1/chain/get_table_rows")
     Call<TableRow> getTableRows(@Body Map<String, String> requestFields);
+
+    @POST("/v1/chain/get_currency_balance")
+    Call<List<String>> getCurrencyBalance(@Body Map<String, String> requestFields);
 
     @POST("/v1/chain/abi_json_to_bin")
     Call<AbiJsonToBin> abiJsonToBin(@Body AbiJsonToBinRequest abiJsonToBinRequest);
@@ -49,6 +65,9 @@ public interface EosApiService {
 
     @POST("/v1/chain/get_required_keys")
     Call<RequiredKeys> getRequiredKeys(@Body RequiredKeysRequest requiredKeysRequest);
+
+    @POST("/v1/chain/get_currency_stats")
+    Call<Map<String, CurrencyStats>> getCurrencyStats(@Body Map<String, String> requestFields);
 
     @POST("/v1/wallet/create")
     Call<String> createWallet(@Body String walletName);
@@ -80,6 +99,25 @@ public interface EosApiService {
     @POST("/v1/wallet/set_timeout")
     Call<Void> setTimeout(@Body Integer timeOut);
 
+    @POST("/v1/wallet/sign_digest")
+    Call<String> signDigest(@Body List<String> parameters);
+
+    @POST("/v1/wallet/create_key")
+    Call<String> createKey(@Body List<String> parameters);
+
     @POST("/v1/wallet/sign_transaction")
     Call<SignedPackedTransaction> signTransaction(@Body SignTransactionRequest unsignedTransaction);
+
+    @POST("/v1/history/get_actions")
+    Call<Actions> getActions(@Body Map<String, Object> requestFields);
+
+    @POST("/v1/history/get_transaction")
+    Call<Transaction> getTransaction(@Body Map<String, String> requestFields);
+
+    @POST("/v1/history/get_key_accounts")
+    Call<KeyAccounts> getKeyAccounts(@Body Map<String, String> requestFields);
+
+    @POST("/v1/history/get_controlled_accounts")
+    Call<ControlledAccounts> getControlledAccounts(@Body Map<String, String> requestFields);
+
 }

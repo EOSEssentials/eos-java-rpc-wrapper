@@ -7,7 +7,7 @@ public class SignedPackedTransaction extends PackedTransaction {
 
     private List<String> signatures;
 
-    public SignedPackedTransaction(){
+    public SignedPackedTransaction() {
 
     }
 

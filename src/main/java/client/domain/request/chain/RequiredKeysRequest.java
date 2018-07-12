@@ -11,7 +11,7 @@ public class RequiredKeysRequest {
 
     private List<String> availableKeys;
 
-    public RequiredKeysRequest(PackedTransaction transaction, List<String> availableKeys){
+    public RequiredKeysRequest(PackedTransaction transaction, List<String> availableKeys) {
         this.transaction = transaction;
         this.availableKeys = availableKeys;
     }
