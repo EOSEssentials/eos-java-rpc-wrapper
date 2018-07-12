@@ -25,35 +25,47 @@ import java.util.*;
 
 public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
 
-    private final EosApiService eosApiService;
+    private final EosWalletApiService eosWalletApiService;
+
+    private final EosChainApiService eosChainApiService;
+
+    private final EosHistoryApiService eosHistoryApiService;
 
     public EosApiRestClientImpl(String baseUrl){
-        eosApiService = EosApiServiceGenerator.createService(EosApiService.class, baseUrl);
+        eosWalletApiService = EosApiServiceGenerator.createService(EosWalletApiService.class, baseUrl);
+        eosChainApiService = EosApiServiceGenerator.createService(EosChainApiService.class, baseUrl);
+        eosHistoryApiService = EosApiServiceGenerator.createService(EosHistoryApiService.class, baseUrl);
+    }
+
+    public EosApiRestClientImpl(String walletBaseUrl, String chainBaseUrl, String historyBaseUrl){
+        eosWalletApiService = EosApiServiceGenerator.createService(EosWalletApiService.class, walletBaseUrl);
+        eosChainApiService = EosApiServiceGenerator.createService(EosChainApiService.class, chainBaseUrl);
+        eosHistoryApiService = EosApiServiceGenerator.createService(EosHistoryApiService.class, historyBaseUrl);
     }
 
     @Override
     public ChainInfo getChainInfo(){
-        return EosApiServiceGenerator.executeSync(eosApiService.getChainInfo());
+        return EosApiServiceGenerator.executeSync(eosChainApiService.getChainInfo());
     }
 
     @Override
     public Block getBlock(String blockNumberOrId){
-        return EosApiServiceGenerator.executeSync(eosApiService.getBlock(Collections.singletonMap("block_num_or_id", blockNumberOrId)));
+        return EosApiServiceGenerator.executeSync(eosChainApiService.getBlock(Collections.singletonMap("block_num_or_id", blockNumberOrId)));
     }
 
     @Override
     public Account getAccount(String accountName){
-        return EosApiServiceGenerator.executeSync(eosApiService.getAccount(Collections.singletonMap("account_name", accountName)));
+        return EosApiServiceGenerator.executeSync(eosChainApiService.getAccount(Collections.singletonMap("account_name", accountName)));
     }
 
     @Override
     public Abi getAbi(String accountName){
-        return EosApiServiceGenerator.executeSync(eosApiService.getAbi(Collections.singletonMap("account_name", accountName)));
+        return EosApiServiceGenerator.executeSync(eosChainApiService.getAbi(Collections.singletonMap("account_name", accountName)));
     }
 
     @Override
     public Code getCode(String accountName){
-        return EosApiServiceGenerator.executeSync(eosApiService.getCode(Collections.singletonMap("account_name", accountName)));
+        return EosApiServiceGenerator.executeSync(eosChainApiService.getCode(Collections.singletonMap("account_name", accountName)));
     }
 
     @Override
@@ -65,7 +77,7 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
         requestParameters.put("table", table);
         requestParameters.put("json", "true");
 
-        return EosApiServiceGenerator.executeSync(eosApiService.getTableRows(requestParameters));
+        return EosApiServiceGenerator.executeSync(eosChainApiService.getTableRows(requestParameters));
     }
 
     @Override
@@ -76,7 +88,7 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
         requestParameters.put("account", accountName);
         requestParameters.put("symbol", symbol);
 
-        return EosApiServiceGenerator.executeSync(eosApiService.getCurrencyBalance(requestParameters));
+        return EosApiServiceGenerator.executeSync(eosChainApiService.getCurrencyBalance(requestParameters));
     }
 
     @Override
@@ -87,27 +99,27 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
         requestParameters.put("action", action);
         requestParameters.put("binargs", binargs);
 
-        return EosApiServiceGenerator.executeSync(eosApiService.abiBinToJson(requestParameters));
+        return EosApiServiceGenerator.executeSync(eosChainApiService.abiBinToJson(requestParameters));
     }
 
     @Override
     public AbiJsonToBin abiJsonToBin (String code, String action, T args){
-        return EosApiServiceGenerator.executeSync(eosApiService.abiJsonToBin(new AbiJsonToBinRequest(code, action, args)));
+        return EosApiServiceGenerator.executeSync(eosChainApiService.abiJsonToBin(new AbiJsonToBinRequest(code, action, args)));
     }
 
     @Override
     public PushedTransaction pushTransaction(String compression, SignedPackedTransaction packedTransaction){
-        return EosApiServiceGenerator.executeSync(eosApiService.pushTransaction(new PushTransactionRequest(compression, packedTransaction, packedTransaction.getSignatures())));
+        return EosApiServiceGenerator.executeSync(eosChainApiService.pushTransaction(new PushTransactionRequest(compression, packedTransaction, packedTransaction.getSignatures())));
     }
 
     @Override
     public List<PushedTransaction> pushTransactions(List<PushTransactionRequest> pushTransactionRequests){
-        return EosApiServiceGenerator.executeSync(eosApiService.pushTransactions(pushTransactionRequests));
+        return EosApiServiceGenerator.executeSync(eosChainApiService.pushTransactions(pushTransactionRequests));
     }
 
     @Override
     public RequiredKeys getRequiredKeys(PackedTransaction transaction, List<String> keys){
-        return EosApiServiceGenerator.executeSync(eosApiService.getRequiredKeys(new RequiredKeysRequest(transaction, keys)));
+        return EosApiServiceGenerator.executeSync(eosChainApiService.getRequiredKeys(new RequiredKeysRequest(transaction, keys)));
     }
 
     @Override
@@ -117,27 +129,27 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
         requestParameters.put("code", code);
         requestParameters.put("symbol", symbol);
 
-        return EosApiServiceGenerator.executeSync(eosApiService.getCurrencyStats(requestParameters));
+        return EosApiServiceGenerator.executeSync(eosChainApiService.getCurrencyStats(requestParameters));
     }
 
     @Override
     public String createWallet(String walletName){
-        return EosApiServiceGenerator.executeSync(eosApiService.createWallet(walletName));
+        return EosApiServiceGenerator.executeSync(eosWalletApiService.createWallet(walletName));
     }
 
     @Override
     public void openWallet(String walletName){
-        EosApiServiceGenerator.executeSync(eosApiService.openWallet(walletName));
+        EosApiServiceGenerator.executeSync(eosWalletApiService.openWallet(walletName));
     }
 
     @Override
     public void lockWallet(String walletName){
-        EosApiServiceGenerator.executeSync(eosApiService.lockWallet(walletName));
+        EosApiServiceGenerator.executeSync(eosWalletApiService.lockWallet(walletName));
     }
 
     @Override
     public void lockAllWallets(){
-        EosApiServiceGenerator.executeSync(eosApiService.lockAll());
+        EosApiServiceGenerator.executeSync(eosWalletApiService.lockAll());
     }
 
     @Override
@@ -146,7 +158,7 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
 
         requestFields.add(walletName);
         requestFields.add(walletPassword);
-        EosApiServiceGenerator.executeSync(eosApiService.unlockWallet(requestFields));
+        EosApiServiceGenerator.executeSync(eosWalletApiService.unlockWallet(requestFields));
     }
 
     @Override
@@ -155,42 +167,42 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
 
         requestFields.add(walletName);
         requestFields.add(key);
-        EosApiServiceGenerator.executeSync(eosApiService.importKey(requestFields));
+        EosApiServiceGenerator.executeSync(eosWalletApiService.importKey(requestFields));
     }
 
     @Override
     public List<String> listWallets(){
-        return EosApiServiceGenerator.executeSync(eosApiService.listWallets());
+        return EosApiServiceGenerator.executeSync(eosWalletApiService.listWallets());
     }
 
     @Override
     public List<List<String>> listKeys(){
-       return EosApiServiceGenerator.executeSync(eosApiService.listKeys());
+       return EosApiServiceGenerator.executeSync(eosWalletApiService.listKeys());
     }
 
     @Override
     public List<String> getPublicKeys(){
-        return EosApiServiceGenerator.executeSync(eosApiService.getPublicKeys());
+        return EosApiServiceGenerator.executeSync(eosWalletApiService.getPublicKeys());
     }
 
     @Override
     public SignedPackedTransaction signTransaction(PackedTransaction packedTransaction, List<String> publicKeys, String chainId) {
-        return EosApiServiceGenerator.executeSync(eosApiService.signTransaction(new SignTransactionRequest(packedTransaction, publicKeys, chainId)));
+        return EosApiServiceGenerator.executeSync(eosWalletApiService.signTransaction(new SignTransactionRequest(packedTransaction, publicKeys, chainId)));
     }
 
     @Override
     public void setWalletTimeout(Integer timeout){
-        EosApiServiceGenerator.executeSync(eosApiService.setTimeout(timeout));
+        EosApiServiceGenerator.executeSync(eosWalletApiService.setTimeout(timeout));
     }
 
     @Override
     public String signDigest(String digest, String publicKey){
-        return EosApiServiceGenerator.executeSync(eosApiService.signDigest(Arrays.asList(digest, publicKey)));
+        return EosApiServiceGenerator.executeSync(eosWalletApiService.signDigest(Arrays.asList(digest, publicKey)));
     }
 
     @Override
     public String createKey(String walletName, WalletKeyType keyType){
-        return EosApiServiceGenerator.executeSync(eosApiService.createKey(Arrays.asList(walletName, keyType.name())));
+        return EosApiServiceGenerator.executeSync(eosWalletApiService.createKey(Arrays.asList(walletName, keyType.name())));
     }
 
     @Override
@@ -201,7 +213,7 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
         requestParameters.put("pos", pos);
         requestParameters.put("offset", offset);
 
-        return EosApiServiceGenerator.executeSync(eosApiService.getActions(requestParameters));
+        return EosApiServiceGenerator.executeSync(eosHistoryApiService.getActions(requestParameters));
     }
 
     @Override
@@ -210,7 +222,7 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
 
         requestParameters.put("id", id);
 
-        return EosApiServiceGenerator.executeSync(eosApiService.getTransaction(requestParameters));
+        return EosApiServiceGenerator.executeSync(eosHistoryApiService.getTransaction(requestParameters));
     }
 
     @Override
@@ -219,7 +231,7 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
 
         requestParameters.put("public_key", publicKey);
 
-        return EosApiServiceGenerator.executeSync(eosApiService.getKeyAccounts(requestParameters));
+        return EosApiServiceGenerator.executeSync(eosHistoryApiService.getKeyAccounts(requestParameters));
     }
 
     @Override
@@ -228,7 +240,7 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
 
         requestParameters.put("controlling_account", controllingAccountName);
 
-        return EosApiServiceGenerator.executeSync(eosApiService.getControlledAccounts(requestParameters));
+        return EosApiServiceGenerator.executeSync(eosHistoryApiService.getControlledAccounts(requestParameters));
     }
 
 }
