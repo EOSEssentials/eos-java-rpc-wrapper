@@ -1,5 +1,6 @@
 package client.impl;
 
+import client.exception.EosApiErrorCode;
 import client.exception.EosApiError;
 import client.exception.EosApiException;
 import okhttp3.OkHttpClient;
@@ -41,7 +42,7 @@ public class EosApiServiceGenerator {
                 return response.body();
             } else {
                 EosApiError apiError = getEosApiError(response);
-                throw new EosApiException(apiError);
+                throw new EosApiException(apiError.getDetailedMessage(), EosApiErrorCode.get(apiError.getEosErrorCode()));
             }
         } catch (IOException e) {
             throw new EosApiException(e);
