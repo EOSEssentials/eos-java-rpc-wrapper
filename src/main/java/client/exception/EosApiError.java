@@ -9,7 +9,7 @@ public class EosApiError {
 
     private String message;
 
-    private String code;
+    private int code;
 
     private EosError error;
 
@@ -21,11 +21,11 @@ public class EosApiError {
         this.message = message;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -49,7 +49,7 @@ public class EosApiError {
         return error == null ? message : message + ": " + error.getWhat();
     }
 
-    public String getEosErrorCode() {
+    public Integer getEosErrorCode() {
         return error == null ? null : error.getCode();
     }
 }
