@@ -1,9 +1,29 @@
 # EOS Java API Wrapper
 
-*A Java implementation of the EOS RPC Calls. Under the [MIT Licence](https://raw.githubusercontent.com/Fletch153/eos-java-rpc-wrapper/master/LICENSE)*. 
+*A Java implementation of the EOS RPC Calls. Under the [MIT Licence](https://raw.githubusercontent.com/Fletch153/eos-java-rpc-wrapper/master/LICENSE)*.
 
 Created by [Chintai](http://www.chintai-eos.io).
 
+The api documentation can be found in the official eos developers portal:
+https://developers.eos.io/eosio-nodeos/reference
+
+All but the following queries are supported:
+1. CHAIN
+- get_header_block_state
+- get_producers
+- push_block
+2. WALLET
+- set_dir
+- set_eosio_key
+3. NET
+- connect
+- disconnect
+- connections
+- status
+4. PRODUCER
+- pause
+- resume
+- paused
 
 #### Requirements
 * Java 8
@@ -12,23 +32,55 @@ Created by [Chintai](http://www.chintai-eos.io).
 #### Installation
 Install using maven build tool. The artifact will need to be published locally.
 
+Currently the artifiac is not in the official maven repositories.
+If you want to use it in a maven build, you can add the following repository
+
+``` xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+```
+
+and dependency
+
+``` xml
+<dependency>
+    <groupId>com.github.EOSEssentials</groupId>
+    <artifactId>eos-java-rpc-wrapper</artifactId>
+    <version>master-SNAPSHOT</version>
+</dependency>
+```
+
 #### Configuration
 Create a new instance of EosApiClient using the EosApiClientFactory, this will require
 a baseurl to be passed in.
 
-```EosApiRestClient eosApiRestClient = EosApiClientFactory.newInstance("http://127.0.0.1:8888").newRestClient();```
+This will use the same base url for all three api endpoints (history/chain/wallet).
+```java
+EosApiRestClient eosApiRestClient = EosApiClientFactory.newInstance("http://127.0.0.1:8888").newRestClient();
+```
 
+If you want to use separate urls for those endpoints (e.g. you have a local wallet):
+```java
+EosApiRestClient eosApiRestClient = EosApiClientFactory.newInstance(
+    walletBaseUrl, chainBaseUrl, historyBaseUrl).newRestClient();
+```
 
 #### Example Usage
 ##### Creating a wallet
-```eosApiRestClient.createWallet("walletName");```
+```java
+eosApiRestClient.createWallet("walletName");
+```
 
 #### Getting a block
-```eosApiRestClient.getBlock("blockNumberOrId")```
+```java
+eosApiRestClient.getBlock("blockNumberOrId")
+```
 
 #### Signing and pushing a transaction
 
-```
+```java
 /* Create the rest client */
 EosApiRestClient eosApiRestClient = EosApiClientFactory.newInstance("http://127.0.0.1:8888").newRestClient();
 
@@ -47,7 +99,6 @@ Block block = eosApiRestClient.getBlock(eosApiRestClient.getChainInfo().getHeadB
 TransactionAuthorization transactionAuthorization = new TransactionAuthorization();
 transactionAuthorization.setActor("currency");
 transactionAuthorization.setPermission("active");
-
 
 /* Create Transaction Action */
 TransactionAction transactionAction = new TransactionAction();
@@ -77,4 +128,3 @@ PushedTransaction = eosApiRestClient.pushTransaction("none", signedPackedTransac
 #### Notes
 * All methods are synchronous and blocking.
 * All methods will throw a catchable EOSApiException.
-
