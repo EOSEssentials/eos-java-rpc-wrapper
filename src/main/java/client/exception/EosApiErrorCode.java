@@ -5,7 +5,27 @@ import java.util.Map;
 
 public enum EosApiErrorCode implements ErrorCode {
 
-    UNSPECIFIED_ERROR(0),
+    UNSPECIFIED_EXCEPTION(0),
+    UNHANDLED_EXCEPTION(1),
+    TIMEOUT_EXCEPTION(2),
+    FILE_NOT_FOUND_EXCEPTION(3),
+    PARSE_ERROR_EXCEPTION(4),
+    INVALID_ARG_EXCEPTION(5),
+    KEY_NOT_FOUND_EXCEPTION(6),
+    BAD_CAST_EXCEPTION(7),
+    OUT_OF_RANGE_EXCEPTION(8),
+    CANCELED_EXCEPTION(9),
+    ASSERT_EXCEPTION(10),
+    EOF_EXCEPTION(11),
+    STD_EXCEPTION(13),
+    INVALID_OPERATION_EXCEPTION(14),
+    UNKNOWN_HOST_EXCEPTION(15),
+    NULL_OPTIONAL(16),
+    UDT_ERROR(17),
+    AES_ERROR(18),
+    OVERFLOW(19),
+    UNDERFLOW(20),
+    DIVIDE_BY_ZERO(21),
     BLOCKCHAIN_EXCEPTION(3000000),
     CHAIN_TYPE_EXCEPTION(3010000),
     INVALID_NAME(3010001),
@@ -114,7 +134,7 @@ public enum EosApiErrorCode implements ErrorCode {
     }
 
     public static EosApiErrorCode get(Integer number) {
-        return idx.getOrDefault(number, UNSPECIFIED_ERROR);
+        return idx.getOrDefault(number, UNSPECIFIED_EXCEPTION);
     }
 
 }
