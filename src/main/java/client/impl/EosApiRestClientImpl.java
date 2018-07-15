@@ -23,7 +23,7 @@ import client.domain.response.history.transaction.Transaction;
 
 import java.util.*;
 
-public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
+public class EosApiRestClientImpl implements EosApiRestClient {
 
     private final EosWalletApiService eosWalletApiService;
 
@@ -103,7 +103,8 @@ public class EosApiRestClientImpl<T> implements EosApiRestClient<T> {
     }
 
     @Override
-    public AbiJsonToBin abiJsonToBin (String code, String action, T args){
+    @SuppressWarnings("unchecked")
+    public <T> AbiJsonToBin abiJsonToBin(String code, String action, T args) {
         return EosApiServiceGenerator.executeSync(eosChainApiService.abiJsonToBin(new AbiJsonToBinRequest(code, action, args)));
     }
 
