@@ -114,8 +114,6 @@ packedTransaction.setRefBlockNum(block.getBlockNum().toString());
 packedTransaction.setExpiration("2018-05-10T18:38:19");
 packedTransaction.setRegion("0");
 packedTransaction.setMax_net_usage_words("0");
-packedTransaction.setContextFreeData(Collections.emptyList());
-packedTransaction.setContextFreeActions(Collections.emptyList());
 packedTransaction.setActions(Collections.singletonList(transactionAction));
 
 /* Sign the Transaction */
