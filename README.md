@@ -2,7 +2,7 @@
 
 *A Java implementation of the EOS RPC Calls. Under the [MIT Licence](https://raw.githubusercontent.com/Fletch153/eos-java-rpc-wrapper/master/LICENSE)*.
 
-Created by [Chintai](http://www.chintai-eos.io).
+Created by [eos42](http://www.eos42.io).
 
 The api documentation can be found in the official eos developers portal:
 https://developers.eos.io/eosio-nodeos/reference
