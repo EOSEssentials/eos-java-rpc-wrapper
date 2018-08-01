@@ -1,9 +1,9 @@
 package client.domain.response.chain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import client.domain.response.history.transaction.Transaction;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+
 public class Block {
 
     private String previous;
@@ -20,7 +20,7 @@ public class Block {
 
     private String scheduleVersion;
 
-    private String newProducers;
+    private String[] newProducers;
 
     private String producerSignature;
 
@@ -29,6 +29,14 @@ public class Block {
     private Long blockNum;
 
     private Long refBlockPrefix;
+
+    private Boolean confirmed;
+
+    private Transaction[] transactions;
+
+    private String[] headerExtensions;
+
+    private String[] blockExtensions;
 
     public Block() {
     }
@@ -124,11 +132,12 @@ public class Block {
         this.refBlockPrefix = refBlockPrefix;
     }
 
-    public String getNewProducers() {
+    public String[] getNewProducers() {
         return newProducers;
     }
 
-    public void setNewProducers(String newProducers) {
+    @JsonProperty("new_producers")
+    public void setNewProducers(String[] newProducers) {
         this.newProducers = newProducers;
     }
 
@@ -139,5 +148,39 @@ public class Block {
     @JsonProperty("schedule_version")
     public void setScheduleVersion(String scheduleVersion) {
         this.scheduleVersion = scheduleVersion;
+    }
+
+    public Boolean getConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(Boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+
+    public Transaction[] getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(Transaction[] transactions) {
+        this.transactions = transactions;
+    }
+
+    public String[] getHeaderExtensions() {
+        return headerExtensions;
+    }
+
+    @JsonProperty("header_extensions")
+    public void setHeaderExtensions(String[] headerExtensions) {
+        this.headerExtensions = headerExtensions;
+    }
+
+    public String[] getBlockExtensions() {
+        return blockExtensions;
+    }
+
+    @JsonProperty("block_extensions")
+    public void setBlockExtensions(String[] blockExtensions) {
+        this.blockExtensions = blockExtensions;
     }
 }

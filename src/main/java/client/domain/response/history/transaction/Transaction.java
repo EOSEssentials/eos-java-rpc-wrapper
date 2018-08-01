@@ -19,6 +19,12 @@ public class Transaction {
 
     private List<ActionTrace> traces = null;
 
+    private String status;
+
+    private String cpuUsageUs;
+
+    private String netUsageWords;
+
     public String getId() {
         return id;
     }
@@ -73,4 +79,29 @@ public class Transaction {
         this.traces = traces;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCpuUsageUs() {
+        return cpuUsageUs;
+    }
+
+    @JsonProperty("cpu_usage_us")
+    public void setCpuUsageUs(String cpuUsageUs) {
+        this.cpuUsageUs = cpuUsageUs;
+    }
+
+    public String getNetUsageWords() {
+        return netUsageWords;
+    }
+
+    @JsonProperty("net_usage_words")
+    public void setNetUsageWords(String netUsageWords) {
+        this.netUsageWords = netUsageWords;
+    }
 }
