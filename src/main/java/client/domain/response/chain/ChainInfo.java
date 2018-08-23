@@ -1,6 +1,7 @@
 package client.domain.response.chain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class ChainInfo {
 
@@ -38,6 +39,11 @@ public class ChainInfo {
 
     @JsonProperty("server_version")
     public void setServerVersion(String serverVersion) {
+        this.serverVersion = serverVersion;
+    }
+
+    @JsonSetter("server_version_string")
+    private void setServerVersionString(String serverVersion) {
         this.serverVersion = serverVersion;
     }
 
