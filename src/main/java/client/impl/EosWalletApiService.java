@@ -32,8 +32,8 @@ public interface EosWalletApiService {
     @GET("/v1/wallet/list_wallets")
     Call<List<String>> listWallets();
 
-    @GET("/v1/wallet/list_keys")
-    Call<List<List<String>>> listKeys();
+    @POST("/v1/wallet/list_keys")
+    Call<List<List<String>>> listKeys(@Body List<String> parameters);
 
     @GET("/v1/wallet/get_public_keys")
     Call<List<String>> getPublicKeys();

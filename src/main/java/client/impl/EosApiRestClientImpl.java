@@ -177,8 +177,9 @@ public class EosApiRestClientImpl implements EosApiRestClient {
     }
 
     @Override
-    public List<List<String>> listKeys(){
-       return EosApiServiceGenerator.executeSync(eosWalletApiService.listKeys());
+    public List<List<String>> listKeys(String walletName, String password){
+        List<String> requestFields = Arrays.asList(walletName, password);
+       return EosApiServiceGenerator.executeSync(eosWalletApiService.listKeys(requestFields));
     }
 
     @Override
