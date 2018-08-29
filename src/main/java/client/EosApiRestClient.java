@@ -60,7 +60,7 @@ public interface EosApiRestClient {
 
     List<String> listWallets();
 
-    List<List<String>> listKeys();
+    List<List<String>> listKeys(String walletName, String password);
 
     List<String> getPublicKeys();
 
