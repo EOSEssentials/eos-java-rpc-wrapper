@@ -1,7 +1,9 @@
 package client.domain.response.chain;
 
-import client.domain.response.history.transaction.Transaction;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import client.domain.response.chain.block.NewProducers;
+import client.domain.response.history.transaction.Transaction;
 
 
 public class Block {
@@ -20,7 +22,7 @@ public class Block {
 
     private String scheduleVersion;
 
-    private String[] newProducers;
+    private NewProducers newProducers;
 
     private String producerSignature;
 
@@ -132,12 +134,12 @@ public class Block {
         this.refBlockPrefix = refBlockPrefix;
     }
 
-    public String[] getNewProducers() {
+    public NewProducers getNewProducers() {
         return newProducers;
     }
 
     @JsonProperty("new_producers")
-    public void setNewProducers(String[] newProducers) {
+    public void setNewProducers(NewProducers newProducers) {
         this.newProducers = newProducers;
     }
 
