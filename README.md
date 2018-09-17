@@ -48,7 +48,7 @@ and dependency
 <dependency>
     <groupId>com.github.EOSEssentials</groupId>
     <artifactId>eos-java-rpc-wrapper</artifactId>
-    <version>master-SNAPSHOT</version>
+    <version>master</version>
 </dependency>
 ```
 
