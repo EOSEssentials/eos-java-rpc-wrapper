@@ -1,9 +1,9 @@
 package client.domain.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
-
 
 public class ActionTrace {
 
@@ -22,6 +22,20 @@ public class ActionTrace {
     private Integer totalCpuUsage;
 
     private String trxId;
+
+    private boolean contextFree;
+
+    private long blockNum;
+
+    private String blockTime;
+
+    private String producerBlockId;
+
+    private long[] accountRamDeltas;
+
+    private String trxStatus;
+
+    private String createdAt;
 
     public Act getAct() {
         return act;
@@ -94,5 +108,65 @@ public class ActionTrace {
     public void setTrxId(String trxId) {
         this.trxId = trxId;
     }
+
+    public boolean isContextFree() {
+        return contextFree;
+    }
+
+    @JsonProperty("context_free")
+    public void setContextFree(boolean contextFree) {
+        this.contextFree = contextFree;
+    }
+
+    public long getBlockNum() {
+        return blockNum;
+    }
+
+    @JsonProperty("block_num")
+    public void setBlockNum(long blockNum) {
+        this.blockNum = blockNum;
+    }
+
+    public String getBlockTime() {
+        return blockTime;
+    }
+    @JsonProperty("block_time")
+    public void setBlockTime(String blockTime) {
+        this.blockTime = blockTime;
+    }
+
+    public String getProducerBlockId() {
+        return producerBlockId;
+    }
+
+    @JsonProperty("producer_block_id")
+    public void setProducerBlockId(String producerBlockId) {
+        this.producerBlockId = producerBlockId;
+    }
+
+    public long[] getAccountRamDeltas() {
+        return accountRamDeltas;
+    }
+    @JsonProperty("account_ram_deltas")
+    public void setAccountRamDeltas(long[] accountRamDeltas) {
+        this.accountRamDeltas = accountRamDeltas;
+    }
+
+    public String getTrxStatus() {
+        return trxStatus;
+    }
+    @JsonProperty("trx_status")
+    public void setTrxStatus(String trxStatus) {
+        this.trxStatus = trxStatus;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+    @JsonProperty("createdAt")
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
 
 }
