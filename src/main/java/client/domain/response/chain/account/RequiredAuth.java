@@ -1,7 +1,10 @@
 package client.domain.response.chain.account;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RequiredAuth {
 
     private List<String> accounts;

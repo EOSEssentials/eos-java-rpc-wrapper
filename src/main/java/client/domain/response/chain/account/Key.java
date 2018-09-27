@@ -1,5 +1,8 @@
 package client.domain.response.chain.account;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Key {
 
     private String key;

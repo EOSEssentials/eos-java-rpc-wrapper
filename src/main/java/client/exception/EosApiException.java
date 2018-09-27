@@ -1,5 +1,8 @@
 package client.exception;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class EosApiException extends RuntimeException {
 
     private EosApiError error;

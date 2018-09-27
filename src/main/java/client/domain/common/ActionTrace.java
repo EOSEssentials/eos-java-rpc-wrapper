@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.HashMap;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ActionTrace {
 
     private Act act;

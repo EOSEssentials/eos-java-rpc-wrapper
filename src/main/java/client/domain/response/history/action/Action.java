@@ -2,8 +2,10 @@
 package client.domain.response.history.action;
 
 import client.domain.common.ActionTrace;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Action {
 
     private Integer accountActionSeq;

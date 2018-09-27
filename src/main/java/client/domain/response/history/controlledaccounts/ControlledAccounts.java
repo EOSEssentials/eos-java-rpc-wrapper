@@ -2,8 +2,10 @@ package client.domain.response.history.controlledaccounts;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ControlledAccounts {
 
     private List<String> controlledAccounts;

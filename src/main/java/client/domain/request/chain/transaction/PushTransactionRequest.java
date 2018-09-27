@@ -1,9 +1,11 @@
 package client.domain.request.chain.transaction;
 
 import client.domain.common.transaction.PackedTransaction;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PushTransactionRequest {
 
     private String compression;

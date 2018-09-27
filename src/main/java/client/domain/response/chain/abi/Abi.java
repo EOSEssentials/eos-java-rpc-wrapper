@@ -1,7 +1,9 @@
 package client.domain.response.chain.abi;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Abi {
 
     private String accountName;

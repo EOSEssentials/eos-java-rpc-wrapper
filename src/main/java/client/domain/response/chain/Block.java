@@ -1,11 +1,12 @@
 package client.domain.response.chain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import client.domain.response.chain.block.NewProducers;
 import client.domain.response.history.transaction.Transaction;
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Block {
 
     private String previous;

@@ -1,5 +1,8 @@
 package client.domain.common.transaction;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TransactionAuthorization {
 
     private String actor;

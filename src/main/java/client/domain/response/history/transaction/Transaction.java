@@ -3,8 +3,10 @@ package client.domain.response.history.transaction;
 import java.util.List;
 
 import client.domain.common.ActionTrace;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Transaction {
 
     private String id;
