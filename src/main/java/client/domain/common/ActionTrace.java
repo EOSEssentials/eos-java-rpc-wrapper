@@ -3,6 +3,7 @@ package client.domain.common;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class ActionTrace {
@@ -31,7 +32,7 @@ public class ActionTrace {
 
     private String producerBlockId;
 
-    private long[] accountRamDeltas;
+    private List<List<String>> accountRamDeltas;
 
     private String trxStatus;
 
@@ -144,11 +145,12 @@ public class ActionTrace {
         this.producerBlockId = producerBlockId;
     }
 
-    public long[] getAccountRamDeltas() {
+    public List<List<String>> getAccountRamDeltas() {
         return accountRamDeltas;
     }
+
     @JsonProperty("account_ram_deltas")
-    public void setAccountRamDeltas(long[] accountRamDeltas) {
+    public void setAccountRamDeltas(List<List<String>> accountRamDeltas) {
         this.accountRamDeltas = accountRamDeltas;
     }
 
