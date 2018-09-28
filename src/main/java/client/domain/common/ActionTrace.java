@@ -33,7 +33,7 @@ public class ActionTrace {
 
     private String producerBlockId;
 
-    private List<List<String>> accountRamDeltas;
+    private List<AccountRamDelta> accountRamDeltas;
 
     private String trxStatus;
 
@@ -146,12 +146,12 @@ public class ActionTrace {
         this.producerBlockId = producerBlockId;
     }
 
-    public List<List<String>> getAccountRamDeltas() {
+    public List<AccountRamDelta> getAccountRamDeltas() {
         return accountRamDeltas;
     }
 
     @JsonProperty("account_ram_deltas")
-    public void setAccountRamDeltas(List<List<String>> accountRamDeltas) {
+    public void setAccountRamDeltas(List<AccountRamDelta> accountRamDeltas) {
         this.accountRamDeltas = accountRamDeltas;
     }
 
