@@ -1,9 +1,13 @@
 package client.exception;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+@Getter
+@Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EosError {
 
@@ -15,40 +19,7 @@ public class EosError {
 
     private EosErrorDetails[] details;
 
-    private EosError(){
-
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getWhat() {
-        return what;
-    }
-
-    public void setWhat(String what) {
-        this.what = what;
-    }
-
-    public EosErrorDetails[] getDetails() {
-        return details;
-    }
-
-    public void setDetails(EosErrorDetails[] details) {
-        this.details = details;
+    private EosError() {
     }
 
     @Override

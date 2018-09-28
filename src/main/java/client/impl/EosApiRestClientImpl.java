@@ -3,6 +3,7 @@ package client.impl;
 
 import client.EosApiRestClient;
 import client.domain.common.WalletKeyType;
+import client.domain.common.transaction.PackedTransaction;
 import client.domain.common.transaction.SignedPackedTransaction;
 import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.AccountRequest;
@@ -10,17 +11,15 @@ import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.request.wallet.transaction.SignTransactionRequest;
 import client.domain.response.chain.*;
-import client.domain.response.chain.account.Account;
 import client.domain.response.chain.abi.Abi;
+import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
-import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.history.action.Actions;
 import client.domain.response.history.controlledaccounts.ControlledAccounts;
 import client.domain.response.history.keyaccounts.KeyAccounts;
 import client.domain.response.history.transaction.Transaction;
-
 
 import java.util.*;
 
@@ -56,9 +55,7 @@ public class EosApiRestClientImpl implements EosApiRestClient {
 
     @Override
     public Account getAccount(String accountName) {
-        AccountRequest request = new AccountRequest();
-        request.setAccountName(accountName);
-//        return EosApiServiceGenerator.executeSync(eosChainApiService.getAccount(Collections.singletonMap("account_name", accountName)));
+        AccountRequest request = AccountRequest.builder().accountName(accountName).build();
         return EosApiServiceGenerator.executeSync(eosChainApiService.getAccount(request));
     }
 

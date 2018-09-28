@@ -5,8 +5,8 @@ import client.domain.request.chain.AccountRequest;
 import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.response.chain.*;
-import client.domain.response.chain.account.Account;
 import client.domain.response.chain.abi.Abi;
+import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
 import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
@@ -27,7 +27,6 @@ public interface EosChainApiService {
     Call<Block> getBlock(@Body Map<String, String> requestFields);
 
     @POST("/v1/chain/get_account")
-//    Call<Account> getAccount(@Body Map<String, String> requestFields);
     Call<Account> getAccount(@Body AccountRequest request);
 
     @POST("/v1/chain/get_abi")
