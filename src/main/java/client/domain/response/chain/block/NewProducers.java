@@ -1,8 +1,13 @@
 package client.domain.response.chain.block;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NewProducers {
 	/*
@@ -20,24 +25,9 @@ public class NewProducers {
 	      ......
 	
 	*/
-	
+
     private int version;
 
     private Producer[] producers;
-    
-    public NewProducers()
-    {
-    	
-    }
-    
-    @JsonProperty("version")
-    public void setVersion(int version) {
-        this.version = version;
-    }
-    
-    @JsonProperty("producers")
-    public void setProducers(Producer[] producers) {
-        this.producers = producers;
-    }
-    
+
 }

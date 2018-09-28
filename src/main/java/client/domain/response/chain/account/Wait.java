@@ -6,10 +6,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
 @ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Wait {
 
     @JsonProperty("weight_sec")

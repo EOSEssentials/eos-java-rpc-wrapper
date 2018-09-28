@@ -7,10 +7,10 @@ import lombok.ToString;
 
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
 @ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RequiredAuth {
 
     private List<String> accounts;
