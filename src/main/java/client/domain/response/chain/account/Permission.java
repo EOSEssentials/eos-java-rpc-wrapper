@@ -2,7 +2,13 @@ package client.domain.response.chain.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Permission {
 
@@ -10,45 +16,10 @@ public class Permission {
 
     private String parent;
 
+    @JsonProperty("perm_name")
     private String permName;
 
+    @JsonProperty("required_auth")
     private RequiredAuth requiredAuth;
 
-    public Permission() {
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getParent() {
-        return parent;
-    }
-
-    public void setParent(String parent) {
-        this.parent = parent;
-    }
-
-    @JsonProperty("required_auth")
-    public RequiredAuth getRequiredAuth() {
-        return requiredAuth;
-    }
-
-    public void setRequiredAuth(RequiredAuth requiredAuth) {
-        this.requiredAuth = requiredAuth;
-    }
-
-    public String getPermName() {
-        return permName;
-    }
-
-    @JsonProperty("perm_name")
-    public void setPermName(String permName) {
-        this.permName = permName;
-    }
 }

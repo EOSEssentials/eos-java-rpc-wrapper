@@ -4,9 +4,15 @@ package client.domain.common;
 import client.domain.response.history.Authorization;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
+@Getter
+@Setter
+@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Act {
 
@@ -16,53 +22,9 @@ public class Act {
 
     private Object data;
 
+    @JsonProperty("hex_data")
     private String hexData;
 
     private String name;
-
-    public String getAccount() {
-        return account;
-    }
-
-    @JsonProperty("account")
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    public List<Authorization> getAuthorization() {
-        return authorization;
-    }
-
-    @JsonProperty("authorization")
-    public void setAuthorization(List<Authorization> authorization) {
-        this.authorization = authorization;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    @JsonProperty("data")
-    public void setData(Object data) {
-        this.data = data;
-    }
-
-    public String getHexData() {
-        return hexData;
-    }
-
-    @JsonProperty("hex_data")
-    public void setHexData(String hexData) {
-        this.hexData = hexData;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
-    }
 
 }

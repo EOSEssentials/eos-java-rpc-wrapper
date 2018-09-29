@@ -3,78 +3,36 @@ package client.domain.response.chain.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
+@Getter
+@Setter
+@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Account {
 
+    @JsonProperty("account_name")
     private String accountName;
 
+    @JsonProperty("eos_balance")
     private String eosBalance;
 
+    @JsonProperty("staked_balance")
     private String stakedBalance;
 
+    @JsonProperty("unstaking_balance")
     private String unstakingBalance;
 
+    @JsonProperty("last_unstaking_time")
     private String lastUnstakingTime;
+
+    @JsonProperty("core_liquid_balance")
+    private String coreLiquidBalance;
 
     private List<Permission> permissions;
 
-    public Account() {
-
-    }
-
-    @JsonProperty("account_name")
-    public String getAccountName() {
-        return accountName;
-    }
-
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
-    }
-
-    @JsonProperty("eos_balance")
-    public String getEosBalance() {
-        return eosBalance;
-    }
-
-    public void setEosBalance(String eosBalance) {
-        this.eosBalance = eosBalance;
-    }
-
-    @JsonProperty("staked_balance")
-    public String getStakedBalance() {
-        return stakedBalance;
-    }
-
-    public void setStakedBalance(String stakedBalance) {
-        this.stakedBalance = stakedBalance;
-    }
-
-    @JsonProperty("unstaking_balance")
-    public String getUnstakingBalance() {
-        return unstakingBalance;
-    }
-
-    public void setUnstakingBalance(String unstakingBalance) {
-        this.unstakingBalance = unstakingBalance;
-    }
-
-    @JsonProperty("last_unstaking_time")
-    public String getLastUnstakingTime() {
-        return lastUnstakingTime;
-    }
-
-    public void setLastUnstakingTime(String lastUnstakingTime) {
-        this.lastUnstakingTime = lastUnstakingTime;
-    }
-
-    public List<Permission> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(List<Permission> permissions) {
-        this.permissions = permissions;
-    }
 }

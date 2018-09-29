@@ -2,9 +2,15 @@ package client.domain.response.chain.code;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
+@Getter
+@Setter
+@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Table {
 
@@ -12,56 +18,13 @@ public class Table {
 
     private String type;
 
+    @JsonProperty("index_type")
     private String indexType;
 
+    @JsonProperty("key_names")
     private List<String> keyNames;
 
+    @JsonProperty("key_types")
     private List<String> keyTypes;
 
-    public Table() {
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    @JsonProperty("index_type")
-    public String getIndexType() {
-        return indexType;
-    }
-
-    public void setIndexType(String indexType) {
-        this.indexType = indexType;
-    }
-
-    @JsonProperty("key_names")
-    public List<String> getKeyNames() {
-        return keyNames;
-    }
-
-    public void setKeyNames(List<String> keyNames) {
-        this.keyNames = keyNames;
-    }
-
-    @JsonProperty("key_types")
-    public List<String> getKeyTypes() {
-        return keyTypes;
-    }
-
-    public void setKeyTypes(List<String> keyTypes) {
-        this.keyTypes = keyTypes;
-    }
 }

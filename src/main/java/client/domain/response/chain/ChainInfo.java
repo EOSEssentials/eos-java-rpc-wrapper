@@ -2,149 +2,53 @@ package client.domain.response.chain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ChainInfo {
 
+    @JsonProperty("server_version")
     private String serverVersion;
 
-    private String chainId;
-
-    private String headBlockNum;
-
-    private String lastIrreversibleBlockNum;
-
-    private String lastIrreversibleBlockId;
-
-    private String headBlockId;
-
-    private String headBlockTime;
-
-    private String headBlockProducer;
-
-    private String virtualBlockCpuLimit;
-
-    private String virtualBlockNetLimit;
-
-    private String blockCpuLimit;
-
-    private String blockNetLimit;
-
-    public ChainInfo() {
-
-    }
-
-    public String getServerVersion() {
-        return serverVersion;
-    }
-
-    @JsonProperty("server_version")
-    public void setServerVersion(String serverVersion) {
-        this.serverVersion = serverVersion;
-    }
-
-    @JsonSetter("server_version_string")
-    private void setServerVersionString(String serverVersion) {
-        this.serverVersion = serverVersion;
-    }
-
-    public String getChainId() {
-        return chainId;
-    }
+    @JsonProperty("server_version_string")
+    private String serverVersionString;
 
     @JsonProperty("chain_id")
-    public void setChainId(String chainId) {
-        this.chainId = chainId;
-    }
-
-    public String getHeadBlockNum() {
-        return headBlockNum;
-    }
+    private String chainId;
 
     @JsonProperty("head_block_num")
-    public void setHeadBlockNum(String headBlockNum) {
-        this.headBlockNum = headBlockNum;
-    }
-
-    public String getLastIrreversibleBlockNum() {
-        return lastIrreversibleBlockNum;
-    }
+    private String headBlockNum;
 
     @JsonProperty("last_irreversible_block_num")
-    public void setLastIrreversibleBlockNum(String lastIrreversibleBlockNum) {
-        this.lastIrreversibleBlockNum = lastIrreversibleBlockNum;
-    }
-
-    public String getLastIrreversibleBlockId() {
-        return lastIrreversibleBlockId;
-    }
+    private String lastIrreversibleBlockNum;
 
     @JsonProperty("last_irreversible_block_id")
-    public void setLastIrreversibleBlockId(String lastIrreversibleBlockId) {
-        this.lastIrreversibleBlockId = lastIrreversibleBlockId;
-    }
-
-    public String getHeadBlockId() {
-        return headBlockId;
-    }
+    private String lastIrreversibleBlockId;
 
     @JsonProperty("head_block_id")
-    public void setHeadBlockId(String headBlockId) {
-        this.headBlockId = headBlockId;
-    }
-
-    public String getHeadBlockTime() {
-        return headBlockTime;
-    }
+    private String headBlockId;
 
     @JsonProperty("head_block_time")
-    public void setHeadBlockTime(String headBlockTime) {
-        this.headBlockTime = headBlockTime;
-    }
-
-    public String getHeadBlockProducer() {
-        return headBlockProducer;
-    }
+    private String headBlockTime;
 
     @JsonProperty("head_block_producer")
-    public void setHeadBlockProducer(String headBlockProducer) {
-        this.headBlockProducer = headBlockProducer;
-    }
-
-    public String getVirtualBlockCpuLimit() {
-        return virtualBlockCpuLimit;
-    }
+    private String headBlockProducer;
 
     @JsonProperty("virtual_block_cpu_limit")
-    public void setVirtualBlockCpuLimit(String virtualBlockCpuLimit) {
-        this.virtualBlockCpuLimit = virtualBlockCpuLimit;
-    }
-
-    public String getVirtualBlockNetLimit() {
-        return virtualBlockNetLimit;
-    }
+    private String virtualBlockCpuLimit;
 
     @JsonProperty("virtual_block_net_limit")
-    public void setVirtualBlockNetLimit(String virtualBlockNetLimit) {
-        this.virtualBlockNetLimit = virtualBlockNetLimit;
-    }
-
-    public String getBlockCpuLimit() {
-        return blockCpuLimit;
-    }
+    private String virtualBlockNetLimit;
 
     @JsonProperty("block_cpu_limit")
-    public void setBlockCpuLimit(String blockCpuLimit) {
-        this.blockCpuLimit = blockCpuLimit;
-    }
-
-    public String getNetCpuLimit() {
-        return blockNetLimit;
-    }
+    private String blockCpuLimit;
 
     @JsonProperty("block_net_limit")
-    public void setBlockNetLimit(String blockNetLimit) {
-        this.blockNetLimit = blockNetLimit;
-    }
+    private String blockNetLimit;
+
 }

@@ -1,7 +1,11 @@
 package client.exception;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EosApiException extends RuntimeException {
 
@@ -33,14 +37,6 @@ public class EosApiException extends RuntimeException {
 
     public EosApiException(String message, Throwable cause, ErrorCode eosErrorCode) {
         super(message, cause);
-        this.eosErrorCode = eosErrorCode;
-    }
-
-    public ErrorCode getEosErrorCode() {
-        return eosErrorCode;
-    }
-
-    public void setEosErrorCode(ErrorCode eosErrorCode) {
         this.eosErrorCode = eosErrorCode;
     }
 

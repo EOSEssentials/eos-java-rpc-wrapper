@@ -1,9 +1,15 @@
 package client.domain.response.chain.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
+@Getter
+@Setter
+@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RequiredAuth {
 
@@ -15,35 +21,4 @@ public class RequiredAuth {
 
     private List<Wait> waits;
 
-    public List<SimpleAccount> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(List<SimpleAccount> accounts) {
-        this.accounts = accounts;
-    }
-
-    public List<Key> getKeys() {
-        return keys;
-    }
-
-    public void setKeys(List<Key> keys) {
-        this.keys = keys;
-    }
-
-    public String getThreshold() {
-        return threshold;
-    }
-
-    public void setThreshold(String threshold) {
-        this.threshold = threshold;
-    }
-
-    public List<Wait> getWaits() {
-        return waits;
-    }
-
-    public void setWaits(List<Wait> waits) {
-        this.waits = waits;
-    }
 }

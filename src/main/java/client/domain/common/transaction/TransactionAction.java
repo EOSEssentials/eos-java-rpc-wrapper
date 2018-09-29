@@ -2,9 +2,15 @@ package client.domain.common.transaction;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
+@Getter
+@Setter
+@ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TransactionAction {
 
@@ -16,39 +22,4 @@ public class TransactionAction {
 
     private String data;
 
-    public TransactionAction() {
-
-    }
-
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<TransactionAuthorization> getAuthorization() {
-        return authorization;
-    }
-
-    public void setAuthorization(List<TransactionAuthorization> authorization) {
-        this.authorization = authorization;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
 }
