@@ -7,7 +7,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RequiredAuth {
 
-    private List<String> accounts;
+    private List<SimpleAccount> accounts;
 
     private List<Key> keys;
 
@@ -15,11 +15,11 @@ public class RequiredAuth {
 
     private List<Wait> waits;
 
-    public List<String> getAccounts() {
+    public List<SimpleAccount> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(List<String> accounts) {
+    public void setAccounts(List<SimpleAccount> accounts) {
         this.accounts = accounts;
     }
 
