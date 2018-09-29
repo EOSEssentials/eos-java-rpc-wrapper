@@ -13,7 +13,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RequiredAuth {
 
-    private List<String> accounts;
+    private List<SimpleAccount> accounts;
 
     private List<Key> keys;
 
