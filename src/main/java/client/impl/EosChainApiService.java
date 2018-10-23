@@ -9,6 +9,8 @@ import client.domain.response.chain.abi.Abi;
 import client.domain.response.chain.code.Code;
 import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
+import client.domain.response.chain.transaction.ScheduledTransaction;
+import client.domain.response.chain.transaction.ScheduledTransactionResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -57,5 +59,8 @@ public interface EosChainApiService {
 
     @POST("/v1/chain/get_currency_stats")
     Call<Map<String, CurrencyStats>> getCurrencyStats(@Body Map<String, String> requestFields);
+
+    @POST("/v1/chain/get_scheduled_transactions")
+    Call<ScheduledTransactionResponse> getScheduledtransaction(@Body Map<String, String> requestFields);
 
 }

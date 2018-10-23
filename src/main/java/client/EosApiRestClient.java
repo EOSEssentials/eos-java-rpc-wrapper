@@ -10,6 +10,7 @@ import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
+import client.domain.response.chain.transaction.ScheduledTransactionResponse;
 import client.domain.response.history.action.Actions;
 import client.domain.response.history.controlledaccounts.ControlledAccounts;
 import client.domain.response.history.keyaccounts.KeyAccounts;
@@ -80,4 +81,5 @@ public interface EosApiRestClient {
 
     ControlledAccounts getControlledAccounts(String controllingAccountName);
 
+    ScheduledTransactionResponse getScheduledtransactions(String lowerBound, String limit);
 }

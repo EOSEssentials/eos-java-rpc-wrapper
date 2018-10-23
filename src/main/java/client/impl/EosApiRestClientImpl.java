@@ -15,6 +15,7 @@ import client.domain.response.chain.code.Code;
 import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
+import client.domain.response.chain.transaction.ScheduledTransactionResponse;
 import client.domain.response.history.action.Actions;
 import client.domain.response.history.controlledaccounts.ControlledAccounts;
 import client.domain.response.history.keyaccounts.KeyAccounts;
@@ -243,6 +244,20 @@ public class EosApiRestClientImpl implements EosApiRestClient {
         requestParameters.put("controlling_account", controllingAccountName);
 
         return EosApiServiceGenerator.executeSync(eosHistoryApiService.getControlledAccounts(requestParameters));
+    }
+
+    @Override
+    public ScheduledTransactionResponse getScheduledtransactions(String lowerBound, String limit){
+        LinkedHashMap<String, String> requestParameters = new LinkedHashMap<>(2);
+
+        requestParameters.put("json", "true");
+
+        if(lowerBound != null)
+          requestParameters.put("lower_bound", lowerBound);
+
+        requestParameters.put("limit", limit);
+
+        return EosApiServiceGenerator.executeSync(eosChainApiService.getScheduledtransaction(requestParameters));
     }
 
 }

@@ -2,6 +2,8 @@ package client.domain.common.transaction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Objects;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TransactionAuthorization {
 
@@ -24,4 +26,5 @@ public class TransactionAuthorization {
     public void setPermission(String permission) {
         this.permission = permission;
     }
+
 }

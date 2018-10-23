@@ -1,10 +1,12 @@
 package client.domain.common.transaction;
 
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 import java.util.List;
+
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PackedTransaction {
@@ -29,8 +31,7 @@ public class PackedTransaction {
 
     private List<TransactionAction> actions;
 
-    private Integer delaySec;
-
+    private Long delaySec;
 
     public String getRegion() {
         return region;
@@ -111,12 +112,12 @@ public class PackedTransaction {
         this.actions = actions;
     }
 
-    public Integer getDelaySec() {
+    public Long getDelaySec() {
         return delaySec;
     }
 
     @JsonProperty("delay_sec")
-    public void setDelaySec(Integer delaySec) {
+    public void setDelaySec(Long delaySec) {
         this.delaySec = delaySec;
     }
 
