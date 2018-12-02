@@ -209,7 +209,7 @@ public class EosApiRestClientImpl implements EosApiRestClient {
     }
 
     @Override
-    public Actions getActions(String accountName, Integer pos, Integer offset){
+    public Actions getActions(String accountName, Long pos, Integer offset){
         LinkedHashMap<String, Object> requestParameters = new LinkedHashMap<>(3);
 
         requestParameters.put("account_name", accountName);
