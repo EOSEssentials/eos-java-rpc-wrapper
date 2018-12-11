@@ -73,7 +73,7 @@ public interface EosApiRestClient {
 
     String createKey(String walletName, WalletKeyType walletKeyType);
 
-    Actions getActions(String accountName, Integer pos, Integer offset);
+    Actions getActions(String accountName, Long pos, Integer offset);
 
     Transaction getTransaction(String id);
 

@@ -10,7 +10,7 @@ public class Actions {
 
     private List<Action> actions;
 
-    private Integer lastIrreversibleBlock;
+    private Long lastIrreversibleBlock;
 
     public List<Action> getActions() {
         return actions;
@@ -20,12 +20,12 @@ public class Actions {
         this.actions = actions;
     }
 
-    public Integer getLastIrreversibleBlock() {
+    public Long getLastIrreversibleBlock() {
         return lastIrreversibleBlock;
     }
 
     @JsonProperty("last_irreversible_block")
-    public void setLastIrreversibleBlock(Integer lastIrreversibleBlock) {
+    public void setLastIrreversibleBlock(Long lastIrreversibleBlock) {
         this.lastIrreversibleBlock = lastIrreversibleBlock;
     }
 }

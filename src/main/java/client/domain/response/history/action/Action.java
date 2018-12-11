@@ -8,22 +8,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Action {
 
-    private Integer accountActionSeq;
+    private Long accountActionSeq;
 
     private ActionTrace actionTrace;
 
-    private Integer blockNum;
+    private Long blockNum;
 
     private String blockTime;
 
-    private Integer globalActionSeq;
+    private Long globalActionSeq;
 
-    public Integer getAccountActionSeq() {
+    public Long getAccountActionSeq() {
         return accountActionSeq;
     }
 
     @JsonProperty("account_action_seq")
-    public void setAccountActionSeq(Integer accountActionSeq) {
+    public void setAccountActionSeq(Long accountActionSeq) {
         this.accountActionSeq = accountActionSeq;
     }
 
@@ -36,12 +36,12 @@ public class Action {
         this.actionTrace = actionTrace;
     }
 
-    public Integer getBlockNum() {
+    public Long getBlockNum() {
         return blockNum;
     }
 
     @JsonProperty("block_num")
-    public void setBlockNum(Integer blockNum) {
+    public void setBlockNum(Long blockNum) {
         this.blockNum = blockNum;
     }
 
@@ -54,12 +54,12 @@ public class Action {
         this.blockTime = blockTime;
     }
 
-    public Integer getGlobalActionSeq() {
+    public Long getGlobalActionSeq() {
         return globalActionSeq;
     }
 
     @JsonProperty("global_action_seq")
-    public void setGlobalActionSeq(Integer globalActionSeq) {
+    public void setGlobalActionSeq(Long globalActionSeq) {
         this.globalActionSeq = globalActionSeq;
     }
 

@@ -16,7 +16,7 @@ public class Receipt {
 
     private Integer codeSequence;
 
-    private Integer globalSequence;
+    private Long globalSequence;
 
     private String receiver;
 
@@ -58,12 +58,12 @@ public class Receipt {
         this.codeSequence = codeSequence;
     }
 
-    public Integer getGlobalSequence() {
+    public Long getGlobalSequence() {
         return globalSequence;
     }
 
     @JsonProperty("global_sequence")
-    public void setGlobalSequence(Integer globalSequence) {
+    public void setGlobalSequence(Long globalSequence) {
         this.globalSequence = globalSequence;
     }
 
