@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>eos.java.rpc.wrapper</groupId>
-    <artifactId>eos.java.rpc.wrapper</artifactId>
+    <groupId>com.github.zhujk</groupId>
+    <artifactId>eos-rpc</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <com.squareup.retrofit2.version>2.4.0</com.squareup.retrofit2.version>
+        <com.squareup.retrofit2.version>2.5.0</com.squareup.retrofit2.version>
+        <converter-scalars.version>2.5.0</converter-scalars.version>
+        <okhttp.version>3.12.0</okhttp.version>
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-scalars</artifactId>
+            <version>${converter-scalars.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
@@ -25,17 +41,16 @@
             <artifactId>converter-jackson</artifactId>
             <version>${com.squareup.retrofit2.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>3.10.0</version>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.6</version>
+            <version>3.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

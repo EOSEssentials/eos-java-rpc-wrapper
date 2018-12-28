@@ -4,16 +4,16 @@ import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.response.chain.*;
-import client.domain.response.chain.account.Account;
 import client.domain.response.chain.abi.Abi;
+import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
 import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
-import client.domain.response.chain.transaction.ScheduledTransaction;
 import client.domain.response.chain.transaction.ScheduledTransactionResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 import java.util.List;
@@ -50,6 +50,10 @@ public interface EosChainApiService {
 
     @POST("/v1/chain/push_transaction")
     Call<PushedTransaction> pushTransaction(@Body PushTransactionRequest pushTransactionRequest);
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("/v1/chain/push_transaction")
+    Call<PushedTransaction> pushRawTransaction(@Body String tx);
 
     @POST("/v1/chain/push_transactions")
     Call<List<PushedTransaction>> pushTransactions(@Body List<PushTransactionRequest> pushTransactionRequests);

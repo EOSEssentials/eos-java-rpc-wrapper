@@ -1,13 +1,13 @@
 package client;
 
 import client.domain.common.WalletKeyType;
+import client.domain.common.transaction.PackedTransaction;
 import client.domain.common.transaction.SignedPackedTransaction;
 import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.response.chain.*;
-import client.domain.response.chain.account.Account;
 import client.domain.response.chain.abi.Abi;
+import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
-import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.chain.transaction.ScheduledTransactionResponse;
@@ -40,6 +40,8 @@ public interface EosApiRestClient {
     <T> AbiJsonToBin abiJsonToBin(String code, String action, T args);
 
     PushedTransaction pushTransaction(String compression, SignedPackedTransaction packedTransaction);
+
+    PushedTransaction pushRawTransaction(String tx);
 
     List<PushedTransaction> pushTransactions(List<PushTransactionRequest> pushTransactionRequests);
 

@@ -3,16 +3,16 @@ package client.impl;
 
 import client.EosApiRestClient;
 import client.domain.common.WalletKeyType;
+import client.domain.common.transaction.PackedTransaction;
 import client.domain.common.transaction.SignedPackedTransaction;
 import client.domain.request.chain.AbiJsonToBinRequest;
 import client.domain.request.chain.RequiredKeysRequest;
 import client.domain.request.chain.transaction.PushTransactionRequest;
 import client.domain.request.wallet.transaction.SignTransactionRequest;
 import client.domain.response.chain.*;
-import client.domain.response.chain.account.Account;
 import client.domain.response.chain.abi.Abi;
+import client.domain.response.chain.account.Account;
 import client.domain.response.chain.code.Code;
-import client.domain.common.transaction.PackedTransaction;
 import client.domain.response.chain.currencystats.CurrencyStats;
 import client.domain.response.chain.transaction.PushedTransaction;
 import client.domain.response.chain.transaction.ScheduledTransactionResponse;
@@ -20,7 +20,6 @@ import client.domain.response.history.action.Actions;
 import client.domain.response.history.controlledaccounts.ControlledAccounts;
 import client.domain.response.history.keyaccounts.KeyAccounts;
 import client.domain.response.history.transaction.Transaction;
-
 
 import java.util.*;
 
@@ -104,7 +103,6 @@ public class EosApiRestClientImpl implements EosApiRestClient {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public <T> AbiJsonToBin abiJsonToBin(String code, String action, T args) {
         return EosApiServiceGenerator.executeSync(eosChainApiService.abiJsonToBin(new AbiJsonToBinRequest(code, action, args)));
     }
@@ -112,6 +110,11 @@ public class EosApiRestClientImpl implements EosApiRestClient {
     @Override
     public PushedTransaction pushTransaction(String compression, SignedPackedTransaction packedTransaction){
         return EosApiServiceGenerator.executeSync(eosChainApiService.pushTransaction(new PushTransactionRequest(compression, packedTransaction, packedTransaction.getSignatures())));
+    }
+
+    @Override
+    public PushedTransaction pushRawTransaction(String tx) {
+        return EosApiServiceGenerator.executeSync(eosChainApiService.pushRawTransaction(tx));
     }
 
     @Override
@@ -252,8 +255,9 @@ public class EosApiRestClientImpl implements EosApiRestClient {
 
         requestParameters.put("json", "true");
 
-        if(lowerBound != null)
-          requestParameters.put("lower_bound", lowerBound);
+        if (lowerBound != null) {
+            requestParameters.put("lower_bound", lowerBound);
+        }
 
         requestParameters.put("limit", limit);
 
