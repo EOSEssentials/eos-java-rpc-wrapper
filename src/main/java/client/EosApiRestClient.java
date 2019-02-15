@@ -31,7 +31,7 @@ public interface EosApiRestClient {
 
     Code getCode(String accountName);
 
-    TableRow getTableRows(String scope, String code, String table);
+    TableRow getTableRows(String scope, String code, String table, String limit);
 
     List<String> getCurrencyBalance(String code, String accountName, String symbol);
 
