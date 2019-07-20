@@ -1,4 +1,5 @@
 # EOS Java API Wrapper
+Note: This library is not actively updated. Some adjustments may be required to work with the latest version of EOSIO.
 
 *A Java implementation of the EOS RPC Calls. Under the [MIT Licence](https://raw.githubusercontent.com/Fletch153/eos-java-rpc-wrapper/master/LICENSE)*.
 
